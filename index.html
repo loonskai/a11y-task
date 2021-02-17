@@ -1,12 +1,163 @@
 <!DOCTYPE html>
+<!-- TODO: Dynamic language change -->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/style.css">
   <title>Hello!</title>
 </head>
 <body>
-  Hello world
+  <header>
+    <img src="./assets/images/logo.png" alt="Логотип Государственного музея Пушкина">
+    <form role="search">
+      <input type="search" aria-label="search text">
+    </form>
+    <nav aria-label="Выбрать язык">
+      <span aria-label="Русский">RU</span>
+      <a href="/en" hreflang="en" aria-label="English">EN</a>
+    </nav>
+    <button>
+      <img src="./assets/images/user-icon.svg" alt="Иконка пользователя">
+    </button>
+    <nav role="navigation">
+      <ul>
+        <li><a href="#museum">Музей</a></li>
+        <li><a href="#museum">Посетителям</a></li>
+        <li><a href="#museum">Выставки и события</a></li>
+      </ul>
+    </nav>
+  </header>
+  <a href="#main">Skip to main</a>
+  <main>
+    <!-- <h1>TODO: Add main title</h1> -->
+    <section>
+      <div class="slider">
+        <button>PREV</button>
+        <img src="./assets/images/slider-1.png" alt="">
+        <button>Билеты онлайн</button>
+        <button>NEXT</button>
+      </div>
+      <div class="actions">
+        <button>Купить билет</button>
+        <button>Стать другом</button>
+        <button>Онлайн-магазин</button>
+      </div>
+    </section>
+    <section>
+      <h2>Выставки и события</h2>
+      <div role="tablist">
+        <button role="tab" id="events-all">Все</button>
+        <button role="tab">Сегодня</button>
+        <button role="tab">Завтра</button>
+      </div>
+      <section role="tabpanel" aria-labelledby="events-all">
+        <div class="card">
+          <img src="./assets/images/event-1.png" alt="">
+          <h3>Святослав Рихтер в кругу друзей. Москва - Коктебель</h3>
+          <span>Выставка до 20 ноября</span>
+          <span>Текст о музее</span>
+          <a href="/buy">Купить билет</a>
+        </div>
+        <div class="card">
+          <img src="./assets/images/event-2.png" alt="">
+          <h3>Тату</h3>
+          <span>Выставка до 27 сентября</span>
+          <span>Текст о музее</span>
+          <a href="/buy">Купить билет</a>
+        </div>
+        <div class="card">
+          <img src="./assets/images/event-3.png" alt="">
+          <h3>От Дюрера до Матисса. Избранные рисунки из собрания ГМИИ им. А.С. Пушкина</h3>
+          <span>Выставка до 1 ноября</span>
+          <span>Текст о музее</span>
+          <a href="/buy">Купить билет</a>
+        </div>
+      </section>
+    </section>
+    <section>
+      <h2>Музей</h2>
+      <div role="tablist">
+        <button role="tab" id="events-all">Здания</button>
+        <button role="tab">История</button>
+      </div>
+      <section role="tabpanel" aria-labelledby="events-all">
+        <div>
+          <div>
+            <img src="./assets/images/building-1.png" alt="Схема здания">
+            <h3>Мемориальная квартира С.Т.РИХТЕРА</h3>
+            <span>ул. Большая Бронная, 2/6, 16 этаж, кв. 58</span>
+            <a href="/details">Подробнее</a>
+          </div>
+          <div>
+            <img src="./assets/images/building-2.png" alt="Схема здания">
+            <h3>ЦЭВ «МУСЕЙОН»</h3>
+            <span>Колымажный пер., 6/2, 3 (вход с Малого Знаменского переулка)</span>
+            <a href="/details">Подробнее</a>
+          </div>
+          <div>
+            <img src="./assets/images/building-3.png" alt="Схема здания">
+            <h3>Усадьба Лопухиных</h3>
+            <span>Малый Знаменский пер., 3/5с4</span>
+            <a href="/details">Подробнее</a>
+          </div>
+          <div>
+            <img src="./assets/images/building-4.png" alt="Схема здания">
+            <h3>Учебный музей</h3>
+            <span>ул. Чаянова, 15</span>
+            <a href="/details">Подробнее</a>
+          </div>
+          <div>
+            <img src="./assets/images/building-5.png" alt="Схема здания">
+            <h3>Отдел личных коллекций</h3>
+            <span>ул. Волхонка, 10</span>
+            <a href="/details">Подробнее</a>
+          </div>
+          <div>
+            <img src="./assets/images/building-6.png" alt="Схема здания">
+            <h3>Галерея</h3>
+            <span>ул. Волхонка, 14</span>
+            <a href="/details">Подробнее</a>
+          </div>
+        </div>
+      </section>
+    </section>
+    <section>
+      <h2>Онлайн-трансляции</h2>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/5qRR-5H1XgU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </section>
+    <section>
+      <h2>Экскурсии и лекции в прямом эфире</h2>
+      <div>
+        С 1 июля вы можете присоединиться к нашим виртуальным мероприятиям — экскурсиям и лекциям для взрослых и детей, оплатив участие на сайте. Встречи будут проходить в прямом эфире на платформе Zoom; предусмотрен формат живого общения с возможностью задавать вопросы экскурсоводу (лектору).
+        <a href="/details">Подробнее.</a><br/>
+        Мы будем благодарны за любое <a href="/charity">пожертвование</a>. Все поступившие средства будут направлены на организацию онлайн-проектов для наших посетителей.</div>
+    </section>
+  </main>
+  <footer>
+    <section>
+    <ul>
+      <li><a href="/details">Посетителям с ограниченными возможностями</a></li>
+      <li><a href="/details">Билеты и льготы</a></li>
+      <li><a href="/details">Противодействие коррупции</a></li>
+    </ul>
+      <h4>Соц. сети</h4>
+      <a href="mail:foo@mail.com"><img src="./assets/images/email-icon.svg"></a>
+      <a href="https://facebook.com"><img src="./assets/images/fb-icon.svg"></a>
+      <a href="https://t.me"><img src="./assets/images/tg-icon.svg"></a>
+    </section>
+    <section>
+      <h4>Подписка на новости</h4>
+      <form>
+        <label for="email">Email</label>
+        <input id="email" type="email">
+        <button type="submit">Подписаться</button>
+        <input type="checkbox" id="agreement">
+        <label for="agreement">Согласен на обработку персональных данных</label>
+      </form>
+    </section>
+  </footer>
+  <script src="./script/index.js"></script>
 </body>
 </html>
