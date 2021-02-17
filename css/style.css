@@ -1,0 +1,35 @@
+:root {
+  --main-color: #5D16D5;
+  --light-color: #C7D2E9;
+  --white-color: #FFFFFF;
+  --black-color: #000000;
+  --grey-light-border: #C7D2E9;
+  --grey-light-bg: #F9F9FB;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  position: relative;
+  font-family: 'Roboto', sans-serif;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.input-group {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.input-group label, .input-group input {
+  flex-basis: 100%;
+}
+
+.btn, .tab {
+  border-radius: 8px;
+  padding: 15px 30px;
+  border: none;
+  cursor: pointer;
+}

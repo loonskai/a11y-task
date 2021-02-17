@@ -1,0 +1,18 @@
+.btn-primary {
+  color: var(--white-color);
+  background: var(--main-color);
+}
+
+.btn-secondary {
+  color: var(--black-color);
+  background: var(--light-color);
+}
+
+.tab {
+  border: none;
+}
+
+.tab--active {
+  color: var(--black-color);
+  background: var(--light-color);
+}

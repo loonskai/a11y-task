@@ -5,10 +5,36 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/modal.css">
+  <link rel="stylesheet" href="./css/buttons.css">
+  <link rel="stylesheet" href="./css/forms.css">
+  <link rel="stylesheet" href="./css/slider.css">
   <title>Hello!</title>
 </head>
 <body>
+  <!-- TODO: Display on click -->
+  <div class="modal" style="display: none;">
+    <div class="modal-dialog">
+      <div class="full-width">
+        <h2>Вход</h2>
+      </div>
+      <form class="full-width">
+      <div class="full-width input-group">
+        <label class="login-form-label" for="login">Логин</label>
+        <input class="login-form-input" type="text" id="login">
+      </div>
+      <div class="full-width input-group">
+        <label class="login-form-label" for="password">Пароль</label>
+        <input class="login-form-input" type="password">
+      </div>
+        <button class="btn btn-secondary login-form-btn" type="submit">Вход</button>
+      </form>
+    </div>
+    <div class="modal-fade"></div>
+  </div>
   <header>
     <img src="./assets/images/logo.png" alt="Логотип Государственного музея Пушкина">
     <form role="search">
@@ -34,23 +60,23 @@
     <!-- <h1>TODO: Add main title</h1> -->
     <section>
       <div class="slider">
-        <button>PREV</button>
+        <button class="slider-arrow-btn slider-arrow-btn--left"></button>
         <img src="./assets/images/slider-1.png" alt="">
-        <button>Билеты онлайн</button>
-        <button>NEXT</button>
+        <button class="btn btn-primary">Билеты онлайн</button>
+        <button class="slider-arrow-btn slider-arrow-btn--right"></button>
       </div>
       <div class="actions">
-        <button>Купить билет</button>
-        <button>Стать другом</button>
-        <button>Онлайн-магазин</button>
+        <button class="btn btn-primary">Купить билет</button>
+        <button class="btn btn-primary">Стать другом</button>
+        <button class="btn btn-primary">Онлайн-магазин</button>
       </div>
     </section>
     <section>
       <h2>Выставки и события</h2>
       <div role="tablist">
-        <button role="tab" id="events-all">Все</button>
-        <button role="tab">Сегодня</button>
-        <button role="tab">Завтра</button>
+        <button class="tab tab--active" role="tab" id="events-all">Все</button>
+        <button class="tab" role="tab">Сегодня</button>
+        <button class="tab" role="tab">Завтра</button>
       </div>
       <section role="tabpanel" aria-labelledby="events-all">
         <div class="card">
@@ -161,3 +187,6 @@
   <script src="./script/index.js"></script>
 </body>
 </html>
+<!-- 
+  1. 
+ -->
