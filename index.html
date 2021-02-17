@@ -15,10 +15,18 @@
   <title>Hello!</title>
 </head>
 <body>
-  <div class="modal" id="modal" style="display: none;">
+  <div 
+    class="modal"
+    id="modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="loginModalHeadingId" 
+    tabindex="-1"
+    style="display: none;"
+  >
     <div class="modal-dialog">
       <div class="full-width">
-        <h2>Вход</h2>
+        <h2 id="loginModalHeadingId">Вход</h2>
       </div>
       <form class="full-width">
       <div class="full-width input-group">
@@ -29,7 +37,7 @@
         <label class="login-form-label" for="password">Пароль</label>
         <input class="login-form-input" type="password">
       </div>
-        <button class="btn btn-secondary login-form-btn" type="submit">Вход</button>
+        <button class="btn btn-secondary login-form-btn" aria-haspopup="true" type="submit">Вход</button>
       </form>
     </div>
     <div class="modal-fade"></div>

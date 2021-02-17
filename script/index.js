@@ -4,7 +4,10 @@ const loginBtn = document.querySelector('#login-btn');
 
 const KEYS = {
   ESC: 'Escape',
+  TAB: 'Tab',
 };
+
+// TODO: Implement focus trap on modal
 
 function closeOnClick(key) {
   return function(e) {
@@ -17,6 +20,7 @@ function closeOnClick(key) {
 
 loginBtn.addEventListener('click', e => {
   modal.style.display = '';
+  modal.focus();    
   document.addEventListener('keydown', closeOnClick(KEYS.ESC), { once: true });
 });
 
