@@ -16,13 +16,12 @@
 </head>
 <body>
   <div 
-    class="modal"
+    class="modal non-visible"
     id="modal"
     role="dialog"
     aria-modal="true"
     aria-labelledby="loginModalHeadingId" 
     tabindex="-1"
-    style="display: none;"
   >
     <div class="modal-dialog">
       <div class="full-width">
@@ -40,7 +39,7 @@
         <button class="btn btn-secondary login-form-btn" aria-haspopup="true" type="submit">Вход</button>
       </form>
     </div>
-    <div class="modal-fade"></div>
+    <div class="modal-mask"></div>
   </div>
   <header>
     <img src="./assets/images/logo.png" alt="Логотип Государственного музея Пушкина">
@@ -191,6 +190,7 @@
       </form>
     </section>
   </footer>
+  <script src="./script/inert.min.js"></script>
   <script src="./script/index.js"></script>
 </body>
 </html>
