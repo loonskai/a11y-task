@@ -1,0 +1,51 @@
+header {
+  width: 100%;
+}
+
+.header {
+  width: inherit;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+  justify-content: space-between;
+}
+
+.controls-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-basis: 50%;
+}
+
+.search-form {
+  position: relative;
+}
+
+.search-input {
+  margin: 0 10px;
+  padding: 10px;
+  padding-right: 25px;
+  border-radius: 8px;
+  border: 1px solid var(--grey-light-border);
+  background: var(--grey-light-bg);
+}
+
+.search-icon {
+  position: absolute;
+  right: 15px;
+  top: 25%;
+}
+
+.navigation {
+  display: flex;
+  flex-basis: 100%;
+}
+
+.navigation-link-container {
+  list-style: none;
+  padding: 0 10px;
+}
+
+.navigation-link-container a {
+  color: var(--black-color);
+}

@@ -8,6 +8,18 @@
   background: var(--light-color);
 }
 
+.btn-icon {
+  display: flex;
+  align-items: center;
+  margin: 0 5px;
+  background: none;
+  border: none;
+}
+
+.btn-icon img {
+  width: 35px;
+}
+
 .tab {
   border: none;
 }

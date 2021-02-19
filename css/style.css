@@ -9,7 +9,9 @@
 
 body {
   padding: 0;
-  margin: 0;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 800px;
   position: relative;
   font-family: 'Roboto', sans-serif;
 }
@@ -29,7 +31,7 @@ body {
 
 .btn, .tab {
   border-radius: 8px;
-  padding: 15px 30px;
+  padding: 10px;
   border: none;
   cursor: pointer;
 }
@@ -48,7 +50,7 @@ body {
 
 #skip-to-main {
   top: -100px;
-  left: 20px;
+  left: 40% ;
   position: absolute;
   transition: top 0.2s;
 }

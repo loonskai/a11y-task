@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/header.css">
   <link rel="stylesheet" href="./css/modal.css">
   <link rel="stylesheet" href="./css/buttons.css">
   <link rel="stylesheet" href="./css/forms.css">
@@ -43,22 +44,29 @@
   </div>
   <a id="skip-to-main" class="btn btn-secondary no-underline" href="#main">Skip to main</a>
   <header>
-    <img src="./assets/images/logo.png" alt="Логотип Государственного музея Пушкина">
-    <form role="search">
-      <input type="search" aria-label="search text">
-    </form>
-    <nav aria-label="Выбрать язык">
-      <span aria-label="Русский">RU</span>
-      <a href="/en" hreflang="en" aria-label="English">EN</a>
-    </nav>
-    <button id="login-btn">
-      <img src="./assets/images/user-icon.svg" alt="Иконка пользователя">
-    </button>
+    <section class="header">
+      <div>
+        <img src="./assets/images/logo.png" alt="Логотип Государственного музея Пушкина">
+      </div>
+      <div class="controls-container">
+        <form class="search-form" role="search">
+          <img class="search-icon" src="./assets/images/search-icon.svg">
+          <input class="search-input" type="search" aria-label="search text">
+        </form>
+        <nav aria-label="Выбрать язык">
+          <span class="btn btn-secondary" aria-label="Русский">RU</span>
+          <a href="/en" class="btn btn-secondary" hreflang="en" aria-label="English">EN</a>
+        </nav>
+        <button id="login-btn" class="btn-icon">
+          <img src="./assets/images/user-icon.svg" alt="Иконка пользователя">
+        </button>
+      </div>
+    </section>
     <nav role="navigation">
-      <ul>
-        <li><a href="#museum">Музей</a></li>
-        <li><a href="#museum">Посетителям</a></li>
-        <li><a href="#museum">Выставки и события</a></li>
+      <ul class="navigation">
+        <li class="navigation-link-container"><a href="#museum">Музей</a></li>
+        <li class="navigation-link-container"><a href="#museum">Посетителям</a></li>
+        <li class="navigation-link-container"><a href="#museum">Выставки и события</a></li>
       </ul>
     </nav>
   </header>
