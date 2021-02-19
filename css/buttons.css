@@ -1,4 +1,6 @@
 .btn-primary {
+  padding: 10px 30px;
+  margin: 0 5px;
   color: var(--white-color);
   background: var(--main-color);
 }
