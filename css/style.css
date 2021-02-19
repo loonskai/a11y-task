@@ -41,3 +41,18 @@ body {
 .non-visible {
   display: none;
 }
+
+.no-underline {
+  text-decoration: none ;
+}
+
+#skip-to-main {
+  top: -100px;
+  left: 20px;
+  position: absolute;
+  transition: top 0.2s;
+}
+
+#skip-to-main:focus {
+  top: 10px;
+}
