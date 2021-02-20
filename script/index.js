@@ -4,7 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const loginBtn = document.querySelector('#login-btn');
   const eventsContainerEl = document.querySelector('#events-container');
   const eventsFilterForm = document.querySelector('#events-filter-form');
-  const museumSectionTabList = document.querySelector('#museum-section-tablist');
+  const museumSectionTabList = document.querySelector('#museum-section__tablist');
+  const museumSectionContent = document.querySelector('#museum-section__content');
 
   const KEYS = {
     ESC: 'Escape',
@@ -167,6 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   museumSectionTabList.addEventListener('click', ({ target }) => {
+    if (target.getAttribute('role') !== 'tab') return;
     const { dataset } = target;
     MUSEUM_SECTION_STATE.selected = dataset.value;
     updateMuseumSection()
@@ -176,6 +178,15 @@ document.addEventListener('DOMContentLoaded', () => {
     Array.from(museumSectionTabList.querySelectorAll('[role="tab"]')).forEach(tab => tab.classList.remove('tab--active'));
     const activeTabNode = museumSectionTabList.querySelector(`[data-value="${MUSEUM_SECTION_STATE.selected}"]`);
     activeTabNode.classList.add('tab--active');
+
+    const contentSections =  Array.from(museumSectionContent.querySelectorAll('[id^="tab-section"]'));
+   contentSections.forEach(section => {
+    if (section.id === `tab-section--${MUSEUM_SECTION_STATE.selected}`) {
+      section.style.display = "";
+    } else {
+      section.style.display = "none";
+    }
+   })
   }
 
   updateMuseumSection();
