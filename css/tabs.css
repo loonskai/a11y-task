@@ -1,8 +1,16 @@
+.tablist {
+  margin-bottom: 1rem;
+}
+
 .tab {
   border: none;
+  background: none;
+  text-decoration: underline;
 }
 
 .tab--active {
+  cursor: auto;
   color: var(--black-color);
   background: var(--light-color);
+  text-decoration: none;
 }

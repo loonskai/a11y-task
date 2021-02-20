@@ -1,4 +1,4 @@
-.events-container {
+.card__container {
   position: relative;
   display: grid;
   grid-gap: 2rem;
@@ -6,13 +6,13 @@
   min-height: 4rem;
 }
 
-.event-card {
+.card {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
 
-.event-card__link {
+.card__link {
   margin: 10px 0;
 }
 

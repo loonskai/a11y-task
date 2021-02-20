@@ -1,9 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
   const modal = document.querySelector('#modal');
-  const modalMask = document.querySelector('.modal-mask');
+  const modalMask = document.querySelector('#modal-mask');
   const loginBtn = document.querySelector('#login-btn');
-  const eventsContainerEl = document.getElementById('events-container');
+  const eventsContainerEl = document.querySelector('#events-container');
   const eventsFilterForm = document.querySelector('#events-filter-form');
+  const museumSectionTabList = document.querySelector('#museum-section-tablist');
 
   const KEYS = {
     ESC: 'Escape',
@@ -94,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const eventUrlLinkEl = document.createElement('a');
-  eventUrlLinkEl.classList.add('event-card__link');
+  eventUrlLinkEl.classList.add('card__link');
   eventUrlLinkEl.appendChild(document.createTextNode('Купить билет'));
 
   eventsFilterForm.addEventListener('change', ({ target }) => {
@@ -129,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const descriptionEl = document.createElement('span');
     const linkEl = eventUrlLinkEl.cloneNode(true);
     
-    cardEl.classList.add('event-card');
+    cardEl.classList.add('card');
     imgEl.setAttribute('src', `./assets/images/${img}`);
     imgEl.setAttribute('alt', `./assets/images/${imgAlt}`);
     titleEl.appendChild(document.createTextNode(title));
@@ -153,4 +154,29 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   createEventCardList();
+
+  // MUSEUM
+  const MUSEUM_SECTION_TABS = Array.from(museumSectionTabList.children)
+    .reduce((acc, child) => {
+      if (child.getAttribute('role') !== 'tab') return acc;
+      const { value } = child.dataset;
+      return { ...acc, [value]: value };
+    }, {});
+  const MUSEUM_SECTION_STATE = {
+    selected: Object.values(MUSEUM_SECTION_TABS)[0]
+  };
+
+  museumSectionTabList.addEventListener('click', ({ target }) => {
+    const { dataset } = target;
+    MUSEUM_SECTION_STATE.selected = dataset.value;
+    updateMuseumSection()
+  });
+
+  function updateMuseumSection() {
+    Array.from(museumSectionTabList.querySelectorAll('[role="tab"]')).forEach(tab => tab.classList.remove('tab--active'));
+    const activeTabNode = museumSectionTabList.querySelector(`[data-value="${MUSEUM_SECTION_STATE.selected}"]`);
+    activeTabNode.classList.add('tab--active');
+  }
+
+  updateMuseumSection();
 });

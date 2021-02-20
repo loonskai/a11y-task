@@ -1,9 +1,14 @@
+main {
+  z-index: 1;
+}
+
 .modal {
   align-items: center;
   justify-content: center;
   position: fixed;
   width: 100vw;
   height: 100vh;
+  z-index: 2;
 }
 
 .modal-mask {
