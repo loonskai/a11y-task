@@ -1,8 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
-
   const modal = document.querySelector('#modal');
   const modalMask = document.querySelector('.modal-mask');
   const loginBtn = document.querySelector('#login-btn');
+  const eventsContainerEl = document.getElementById('events-container');
+  const eventsFilterForm = document.querySelector('#events-filter-form');
 
   const KEYS = {
     ESC: 'Escape',
@@ -47,78 +48,13 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // EVENTS
-  let EVENTS = [];
   const EVENT_FILTERS = {
     ALL: 'ALL',
     TODAY: 'TODAY',
     TOMORROW: 'TOMORROW'
   };
-
-  let dateFilter = EVENT_FILTERS.ALL;
-
-  const eventsContainerEl = document.getElementById('events-container');
-  const loader = document.getElementById('events-loader');
-  const eventUrlLinkEl = document.createElement('a');
-  eventUrlLinkEl.appendChild(document.createTextNode('Купить билет'));
-
-  function createEventCardList(cb) {
-    const filteredEvents = filterEventsByDate(EVENTS);
-    const eventCardElements = filteredEvents.map(event => createEventCardEl(event));
-    cb();
-    eventCardElements.forEach(el => eventsContainerEl.appendChild(el));
-  }
-
-  function createEventCardEl({
-    title,
-    dateNote,
-    description,
-    img,
-    imgAlt,
-    url
-  }) {
-    const cardEl = document.createElement('div');
-    const titleEl = document.createElement('h3');
-    const imgEl = document.createElement('img');
-    const dateNoteEl = document.createElement('span');
-    const descriptionEl = document.createElement('span');
-    const linkEl = eventUrlLinkEl.cloneNode(true);
-    
-    titleEl.appendChild(document.createTextNode(title));
-    imgEl.setAttribute('src', `./assets/images/${img}`);
-    imgEl.setAttribute('alt', `./assets/images/${imgAlt}`);
-    dateNoteEl.appendChild(document.createTextNode(dateNote));
-    descriptionEl.appendChild(document.createTextNode(description));
-    linkEl.setAttribute('href', url);
-
-    cardEl.classList.add('event-card');
-    cardEl.appendChild(titleEl);
-    cardEl.appendChild(imgEl);
-    cardEl.appendChild(dateNoteEl);
-    cardEl.appendChild(descriptionEl);
-    cardEl.appendChild(linkEl);
-    return cardEl;
-  }
-
-  function filterEventsByDate(events) {
-    if (dateFilter === EVENT_FILTERS.ALL) return events;
-    return EVENTS.filter(e => e.date === dateFilter);
-  }
-
-  function updateEventsFilter(value) {
-    dateFilter = value;
-  }
-
-  function setLoader(value) {
-    if (value) {
-      loader.style.display = "";
-    } else {
-      loader.style.display = "none";
-    }
-  }
-
-  setTimeout(() => {
-    setLoader();
-    EVENTS = [
+  const EVENTS_STATE = {
+    _events: [
       {
         title: 'Святослав Рихтер в кругу друзей. Москва - Коктебель',
         dateNote: 'Выставка до 20 ноября',
@@ -146,7 +82,75 @@ document.addEventListener('DOMContentLoaded', () => {
         url: '/buy',
         date: EVENT_FILTERS.TOMORROW
       },
-    ];
-    createEventCardList(() => setLoader(false));
-  }, 1000);
+    ],
+    filter: EVENT_FILTERS.ALL,
+    get events() {
+      if (this.filter === EVENT_FILTERS.ALL) {
+        return this._events;
+      } else {
+        return this._events.filter(e => e.date === this.filter);
+      }
+    },
+  };
+
+  const eventUrlLinkEl = document.createElement('a');
+  eventUrlLinkEl.classList.add('event-card__link');
+  eventUrlLinkEl.appendChild(document.createTextNode('Купить билет'));
+
+  eventsFilterForm.addEventListener('change', ({ target }) => {
+    const { value } = target;
+    EVENTS_STATE.filter = value;
+    createEventCardList();
+  })
+
+  let timeout;
+  function createEventCardList() {
+    setLoader();
+    if (timeout) clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      const eventCardElements = EVENTS_STATE.events.map(event => createEventCardEl(event));
+      eventsContainerEl.innerHTML = '';
+      eventCardElements.forEach(el => eventsContainerEl.appendChild(el));
+    }, 1000);
+  }
+
+  function createEventCardEl({
+    title,
+    dateNote,
+    description,
+    img,
+    imgAlt,
+    url
+  }) {
+    const cardEl = document.createElement('div');
+    const titleEl = document.createElement('h3');
+    const imgEl = document.createElement('img');
+    const dateNoteEl = document.createElement('h4');
+    const descriptionEl = document.createElement('span');
+    const linkEl = eventUrlLinkEl.cloneNode(true);
+    
+    cardEl.classList.add('event-card');
+    imgEl.setAttribute('src', `./assets/images/${img}`);
+    imgEl.setAttribute('alt', `./assets/images/${imgAlt}`);
+    titleEl.appendChild(document.createTextNode(title));
+    dateNoteEl.appendChild(document.createTextNode(dateNote));
+    descriptionEl.appendChild(document.createTextNode(description));
+    linkEl.setAttribute('href', url);
+
+    cardEl.appendChild(imgEl);
+    cardEl.appendChild(titleEl);
+    cardEl.appendChild(dateNoteEl);
+    cardEl.appendChild(descriptionEl);
+    cardEl.appendChild(linkEl);
+    return cardEl;
+  }
+
+  function setLoader() {
+    const loader = document.createElement('div');
+    loader.classList.add('events__loader');
+    loader.appendChild(document.createTextNode('Загрузка...'))
+    eventsContainerEl.appendChild(loader);
+  }
+
+  createEventCardList();
 });

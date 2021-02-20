@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="./css/tabs.css">
   <link rel="stylesheet" href="./css/filter.css">
   <link rel="stylesheet" href="./css/forms.css">
+  <link rel="stylesheet" href="./css/cards.css">
   <link rel="stylesheet" href="./css/slider.css">
   <title>Hello!</title>
 </head>
@@ -74,7 +75,7 @@
   </header>
   <main>
     <!-- <h1>TODO: Add main title</h1> -->
-    <section>
+    <section class="content-section">
       <div class="slider">
         <button class="slider-arrow-btn slider-arrow-btn--left"></button>
         <button class="slider-arrow-btn slider-arrow-btn--right"></button>
@@ -89,14 +90,14 @@
         <button class="btn btn-primary">Онлайн-магазин</button>
       </div>
     </section>
-    <section>
+    <section class="content-section">
       <h2>Выставки и события</h2>
       <!-- <div role="tablist">
         <button class="tab tab--active" role="tab" id="events-all">Все</button>
         <button class="tab" role="tab">Сегодня</button>
         <button class="tab" role="tab">Завтра</button>
       </div> -->
-      <form>
+      <form id="events-filter-form">
         <fieldset role="tablist">
           <label class="radio option">
             <input class="radio__input" type="radio" value="ALL" name="dateFilter" checked>
@@ -115,32 +116,9 @@
           </label>
         </fieldset>
       </form>
-      <section id="events-container" role="tabpanel" aria-labelledby="events-all">
-        <div id="events-loader">Загрузка...</div>
-        <!-- <div class="card">
-          <img src="./assets/images/event-1.png" alt="">
-          <h3>Святослав Рихтер в кругу друзей. Москва - Коктебель</h3>
-          <span>Выставка до 20 ноября</span>
-          <span>Текст о музее</span>
-          <a href="/buy">Купить билет</a>
-        </div>
-        <div class="card">
-          <img src="./assets/images/event-2.png" alt="">
-          <h3>Тату</h3>
-          <span>Выставка до 27 сентября</span>
-          <span>Текст о музее</span>
-          <a href="/buy">Купить билет</a>
-        </div>
-        <div class="card">
-          <img src="./assets/images/event-3.png" alt="">
-          <h3>От Дюрера до Матисса. Избранные рисунки из собрания ГМИИ им. А.С. Пушкина</h3>
-          <span>Выставка до 1 ноября</span>
-          <span>Текст о музее</span>
-          <a href="/buy">Купить билет</a>
-        </div> -->
-      </section>
+      <section id="events-container" class="events-container" role="tabpanel" aria-labelledby="events-all"></section>
     </section>
-    <section>
+    <section class="content-section">
       <h2>Музей</h2>
       <div role="tablist">
         <button role="tab tab--active" id="events-all">Здания</button>
@@ -187,7 +165,7 @@
         </div>
       </section>
     </section>
-    <section>
+    <section class="content-section">
       <h2>Онлайн-трансляции</h2>
       <iframe width="560" height="315" src="https://www.youtube.com/embed/5qRR-5H1XgU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </section>
@@ -226,6 +204,3 @@
   <script src="./script/index.js"></script>
 </body>
 </html>
-<!-- 
-  1. 
- -->

@@ -1,0 +1,29 @@
+.events-container {
+  position: relative;
+  display: grid;
+  grid-gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(312px, 312px));
+  min-height: 4rem;
+}
+
+.event-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.event-card__link {
+  margin: 10px 0;
+}
+
+.events__loader {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--white-color);
+  opacity: 0.9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+}

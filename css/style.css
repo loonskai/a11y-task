@@ -11,7 +11,7 @@ body {
   padding: 0;
   margin: 0 auto;
   width: 100%;
-  max-width: 800px;
+  max-width: 1000px;
   position: relative;
   font-family: 'Roboto', sans-serif;
 }
@@ -22,6 +22,10 @@ fieldset {
 
 .full-width {
   width: 100%;
+}
+
+.content-section {
+  margin-bottom: 4rem;
 }
 
 .input-group {
