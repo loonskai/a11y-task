@@ -1,0 +1,8 @@
+.tab {
+  border: none;
+}
+
+.tab--active {
+  color: var(--black-color);
+  background: var(--light-color);
+}

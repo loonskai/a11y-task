@@ -11,6 +11,8 @@
   <link rel="stylesheet" href="./css/header.css">
   <link rel="stylesheet" href="./css/modal.css">
   <link rel="stylesheet" href="./css/buttons.css">
+  <link rel="stylesheet" href="./css/tabs.css">
+  <link rel="stylesheet" href="./css/filter.css">
   <link rel="stylesheet" href="./css/forms.css">
   <link rel="stylesheet" href="./css/slider.css">
   <title>Hello!</title>
@@ -89,13 +91,33 @@
     </section>
     <section>
       <h2>Выставки и события</h2>
-      <div role="tablist">
+      <!-- <div role="tablist">
         <button class="tab tab--active" role="tab" id="events-all">Все</button>
         <button class="tab" role="tab">Сегодня</button>
         <button class="tab" role="tab">Завтра</button>
-      </div>
-      <section role="tabpanel" aria-labelledby="events-all">
-        <div class="card">
+      </div> -->
+      <form>
+        <fieldset role="tablist">
+          <label class="radio option">
+            <input class="radio__input" type="radio" value="ALL" name="dateFilter" checked>
+            <span class="radio__circle"></span>
+            Все
+          </label>
+          <label class="radio option">
+            <input class="radio__input" type="radio" value="TODAY" name="dateFilter">
+            <span class="radio__circle"></span>
+            Сегодня
+          </label>
+          <label class="radio option">
+            <input class="radio__input" type="radio" value="TOMORROW" name="dateFilter">
+            <span class="radio__circle"></span>
+            Завтра
+          </label>
+        </fieldset>
+      </form>
+      <section id="events-container" role="tabpanel" aria-labelledby="events-all">
+        <div id="events-loader">Загрузка...</div>
+        <!-- <div class="card">
           <img src="./assets/images/event-1.png" alt="">
           <h3>Святослав Рихтер в кругу друзей. Москва - Коктебель</h3>
           <span>Выставка до 20 ноября</span>
@@ -115,13 +137,13 @@
           <span>Выставка до 1 ноября</span>
           <span>Текст о музее</span>
           <a href="/buy">Купить билет</a>
-        </div>
+        </div> -->
       </section>
     </section>
     <section>
       <h2>Музей</h2>
       <div role="tablist">
-        <button role="tab" id="events-all">Здания</button>
+        <button role="tab tab--active" id="events-all">Здания</button>
         <button role="tab">История</button>
       </div>
       <section role="tabpanel" aria-labelledby="events-all">

@@ -16,6 +16,10 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+fieldset {
+  border: none;
+}
+
 .full-width {
   width: 100%;
 }
