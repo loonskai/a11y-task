@@ -12,11 +12,15 @@
   <link rel="stylesheet" href="./css/modal.css">
   <link rel="stylesheet" href="./css/buttons.css">
   <link rel="stylesheet" href="./css/tabs.css">
-  <link rel="stylesheet" href="./css/filter.css">
+  <link rel="stylesheet" href="./css/radio.css">
+  <link rel="stylesheet" href="./css/checkbox.css">
   <link rel="stylesheet" href="./css/forms.css">
   <link rel="stylesheet" href="./css/cards.css">
+  <link rel="stylesheet" href="./css/lists.css">
   <link rel="stylesheet" href="./css/slider.css">
   <link rel="stylesheet" href="./css/iframe.css">
+  <link rel="stylesheet" href="./css/links.css">
+  <link rel="stylesheet" href="./css/footer.css">
   <title>Hello!</title>
 </head>
 <body>
@@ -33,21 +37,21 @@
         <h2 id="loginModalHeadingId">Вход</h2>
       </div>
       <form class="full-width">
-      <div class="full-width input-group">
-        <label class="login-form-label" for="login">Логин</label>
-        <input class="login-form-input" type="text" id="login">
-      </div>
-      <div class="full-width input-group">
-        <label class="login-form-label" for="password">Пароль</label>
-        <input class="login-form-input" type="password">
-      </div>
+        <label class="input">
+          <span class="login-form-label">Логин</span>
+          <input class="login-form-input" type="text" id="login">
+        </label>
+        <label class="input">
+          <span class="login-form-label">Пароль</span>
+          <input class="login-form-input" type="password">
+        </label>
         <button class="btn btn-secondary login-form-btn" aria-haspopup="true" type="submit">Вход</button>
       </form>
     </div>
     <div class="modal-mask" id="modal-mask"></div>
   </div>
   <a id="skip-to-main" class="btn btn-secondary no-underline" href="#main">Skip to main</a>
-  <header>
+  <header class="container">
     <section class="header">
       <div>
         <img src="./assets/images/logo.png" alt="Логотип Государственного музея Пушкина">
@@ -67,14 +71,14 @@
       </div>
     </section>
     <nav role="navigation">
-      <ul class="navigation">
+      <ul class="navigation no-decoration-list">
         <li class="navigation-link-container"><a href="#museum">Музей</a></li>
         <li class="navigation-link-container"><a href="#museum">Посетителям</a></li>
         <li class="navigation-link-container"><a href="#museum">Выставки и события</a></li>
       </ul>
     </nav>
   </header>
-  <main>
+  <main class="container">
     <!-- <h1>TODO: Add main title</h1> -->
     <section class="content-section">
       <div class="slider">
@@ -174,36 +178,50 @@
         <iframe class="iframe__video" src="https://www.youtube.com/embed/5qRR-5H1XgU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
     </section>
-    <section>
+    <section class="content-section">
       <h2>Экскурсии и лекции в прямом эфире</h2>
       <div>
-        С 1 июля вы можете присоединиться к нашим виртуальным мероприятиям — экскурсиям и лекциям для взрослых и детей, оплатив участие на сайте. Встречи будут проходить в прямом эфире на платформе Zoom; предусмотрен формат живого общения с возможностью задавать вопросы экскурсоводу (лектору).
-        <a href="/details">Подробнее.</a><br/>
-        Мы будем благодарны за любое <a href="/charity">пожертвование</a>. Все поступившие средства будут направлены на организацию онлайн-проектов для наших посетителей.</div>
+        <p>С 1 июля вы можете присоединиться к нашим виртуальным мероприятиям — экскурсиям и лекциям для взрослых и детей, оплатив участие на сайте. Встречи будут проходить в прямом эфире на платформе Zoom; предусмотрен формат живого общения с возможностью задавать вопросы экскурсоводу (лектору).
+          <br>
+          <a href="/details">Подробнее.</a>
+        </p>
+        <p>Мы будем благодарны за любое <a href="/charity">пожертвование</a>. Все поступившие средства будут направлены на организацию онлайн-проектов для наших посетителей.</p>
+      </div>
     </section>
   </main>
   <footer>
-    <section>
-    <ul>
-      <li><a href="/details">Посетителям с ограниченными возможностями</a></li>
-      <li><a href="/details">Билеты и льготы</a></li>
-      <li><a href="/details">Противодействие коррупции</a></li>
-    </ul>
-      <h4>Соц. сети</h4>
-      <a href="mail:foo@mail.com"><img src="./assets/images/email-icon.svg"></a>
-      <a href="https://facebook.com"><img src="./assets/images/fb-icon.svg"></a>
-      <a href="https://t.me"><img src="./assets/images/tg-icon.svg"></a>
-    </section>
-    <section>
-      <h4>Подписка на новости</h4>
-      <form>
-        <label for="email">Email</label>
-        <input id="email" type="email">
-        <button type="submit">Подписаться</button>
-        <input type="checkbox" id="agreement">
-        <label for="agreement">Согласен на обработку персональных данных</label>
-      </form>
-    </section>
+    <div class="container col-2">
+      <section>
+        <ul class="no-decoration-list">
+          <li><a href="/details">Посетителям с ограниченными возможностями</a></li>
+          <li><a href="/details">Билеты и льготы</a></li>
+          <li><a href="/details">Противодействие коррупции</a></li>
+        </ul>
+        <h3>Соц. сети</h3>
+        <ul class="no-decoration-list flex">
+          <li><a class="icon-link" href="mail:foo@mail.com"><img src="./assets/images/email-icon.svg"></a></li>
+          <li><a class="icon-link" href="https://facebook.com"><img src="./assets/images/fb-icon.svg"></a></li>
+          <li><a class="icon-link" href="https://t.me"><img src="./assets/images/tg-icon.svg"></a></li>
+        </ul>
+      </section>
+      <section>
+        <h3>Подписка на новости</h3>
+        <form id="subscription-form">
+          <div class="col-3">
+            <label class="input">
+              <span>Email</span>
+              <input class="material-input" id="email" type="email">
+            </label>
+            <button class="btn btn-primary" id="subscription-form-submit" type="submit">Подписаться</button>
+          </div>
+          <label class="check">
+            <input class="check__input" type="checkbox" id="agreement">
+            <span class="check__box"></span>
+            Согласен на обработку персональных данных
+          </label>
+        </form>
+      </section>
+    </div>
   </footer>
   <script src="./script/inert.min.js"></script>
   <script src="./script/index.js"></script>

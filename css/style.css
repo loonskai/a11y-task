@@ -5,13 +5,13 @@
   --black-color: #000000;
   --grey-light-border: #C7D2E9;
   --grey-light-bg: #F9F9FB;
+  --grey-light-bg-footer: #F1F1F1;
+  --grey-disabled: #b3b3b3;
 }
 
 body {
   padding: 0;
   margin: 0 auto;
-  width: 100%;
-  max-width: 1000px;
   position: relative;
   font-family: 'Roboto', sans-serif;
 }
@@ -20,21 +20,33 @@ fieldset {
   border: none;
 }
 
+.container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.flex {
+  display: flex;
+}
+
+.col-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.col-3 {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-column-gap: 1em;
+}
+
 .full-width {
   width: 100%;
 }
 
 .content-section {
   margin-bottom: 4rem;
-}
-
-.input-group {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.input-group label, .input-group input {
-  flex-basis: 100%;
 }
 
 .btn, .tab {

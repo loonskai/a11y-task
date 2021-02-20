@@ -1,8 +1,18 @@
+.btn {
+  max-height: 40px;
+  align-self: end;
+}
+
 .btn-primary {
   padding: 10px 30px;
   margin: 0 5px;
   color: var(--white-color);
   background: var(--main-color);
+}
+
+.btn-primary:disabled {
+  background: var(--grey-disabled);
+  cursor: auto;
 }
 
 .btn-secondary {
@@ -16,10 +26,9 @@
   margin: 0 5px;
   background: none;
   border: none;
+  cursor: pointer;
 }
 
 .btn-icon img {
   width: 35px;
 }
-
-

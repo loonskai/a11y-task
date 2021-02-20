@@ -1,4 +1,19 @@
-.login-form-label, .login-form-input {
+.input {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.input span, .input input {
+  flex-basis: 100%;
+}
+
+.input span {
+  margin-bottom: 0.5em;
+}
+
+.login-form-label,
+.login-form-input,
+.material-input {
   font-size: 16px;
 }
 
@@ -17,4 +32,11 @@
 .login-form-btn {
   width: 100%;
   margin: 20px 0;
+}
+
+.material-input {
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--black-color);
+  padding: 8px;
 }

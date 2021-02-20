@@ -42,8 +42,7 @@ header {
 }
 
 .navigation-link-container {
-  list-style: none;
-  padding: 0 10px;
+  padding-right: 2rem;
 }
 
 .navigation-link-container a {

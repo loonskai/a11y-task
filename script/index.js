@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const eventsFilterForm = document.querySelector('#events-filter-form');
   const museumSectionTabList = document.querySelector('#museum-section__tablist');
   const museumSectionContent = document.querySelector('#museum-section__content');
+  const subscriptionForm = document.querySelector('#subscription-form');
 
   const KEYS = {
     ESC: 'Escape',
@@ -180,14 +181,31 @@ document.addEventListener('DOMContentLoaded', () => {
     activeTabNode.classList.add('tab--active');
 
     const contentSections =  Array.from(museumSectionContent.querySelectorAll('[id^="tab-section"]'));
-   contentSections.forEach(section => {
-    if (section.id === `tab-section--${MUSEUM_SECTION_STATE.selected}`) {
-      section.style.display = "";
-    } else {
-      section.style.display = "none";
-    }
+    contentSections.forEach(section => {
+      if (section.id === `tab-section--${MUSEUM_SECTION_STATE.selected}`) {
+        section.style.display = "";
+      } else {
+        section.style.display = "none";
+      }
    })
   }
 
   updateMuseumSection();
+
+  // SUBSCRIPTION FORM
+  const subscriptionButton = subscriptionForm.querySelector('#subscription-form-submit');
+  const SUBSCRIPTION_FORM_STATE = {
+    checked: false
+  };
+
+  subscriptionForm.addEventListener('change', ({ target }) => {
+    SUBSCRIPTION_FORM_STATE.checked = target.checked;
+    updateSubscribsionForm();
+  });
+
+  function updateSubscribsionForm() {
+    subscriptionButton.disabled = !SUBSCRIPTION_FORM_STATE.checked;
+  }
+
+  updateSubscribsionForm();
 });
