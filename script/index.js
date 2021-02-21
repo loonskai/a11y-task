@@ -62,20 +62,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // const carouselLiveregion = document.querySelector('#carousel-liveregion');
   class MyCarousel {
     constructor() {
-      // this.DURATION = 5000;
-      this.DURATION = 1000;
+      this.DURATION = 5000;
     }
     
     init(settings) {
       this.current = 0;
       this.settings = settings;
-      prevButton.addEventListener('click', function () {
+      prevButton.addEventListener('click', () => {
+        this.stopAnimation();
         this.prevSlide(true);
       });
-      nextButton.addEventListener('click', function () {
+      nextButton.addEventListener('click', () => {
+        this.stopAnimation();
         this.nextSlide(true);
       });
-
       carouselNav.addEventListener('click', ({ target }) => {
         if (target.nodeName.toLowerCase() !== 'button') return;
         if (target.getAttribute('data-slide')) {
@@ -90,11 +90,13 @@ document.addEventListener('DOMContentLoaded', () => {
           this.startAnimation();
         }
       }, true);
+      carousel.addEventListener('transitionend', ({ target }) => {
+        target.classList.remove('in-transition');
+      });
 
       slides[0].classList.add('carousel__slide--active');
       slides[1].classList.add('carousel__slide--next');
       slides[slides.length - 1].classList.add('carousel__slide--prev');
-
       this.toggleNavigationControl(settings.startAnimated);
       if (settings.startAnimated) {
         this.timer = setTimeout(() => this.nextSlide(), this.DURATION);
@@ -170,7 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     prevSlide(announceItem = false) {
-      let newCurrent = this.current + 1;
+      let newCurrent = this.current - 1;
       if (newCurrent < 0) {
         newCurrent = slides.length - 1;
       }
@@ -196,7 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const myCarousel = new MyCarousel();
   myCarousel.init({
-    startAnimated: false,
+    startAnimated: true,
     animate: true
   });
 
