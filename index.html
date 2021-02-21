@@ -82,22 +82,24 @@
     <!-- <h1>TODO: Add main title</h1> -->
     <section class="content-section">
       <section class="carousel" id="carousel">
-        <button class="carousel__arrow-btn carousel__arrow-btn--prev" id="carousel-btn-prev"></button>
-        <button class="carousel__arrow-btn carousel__arrow-btn--next" id="carousel-btn-next"></button>
-        <ul class="carousel__slide-container">
-          <li class="carousel__slide">
-            <img src="./assets/images/carousel-1.png" alt="Афиша выставки 'От Дюрера до Матисса - Избранные рисунки из собрания ГМИИ им. А.С. Пушкина">
-            <button class="btn btn-primary carousel__action-btn">Билеты онлайн</button>
-          </li>
-          <li class="carousel__slide">
-            <img src="./assets/images/carousel-2.png" alt="Афиша выставки 'От Дюрера до Матисса - Избранные рисунки из собрания ГМИИ им. А.С. Пушкина">
-            <button class="btn btn-primary carousel__action-btn">Билеты онлайн</button>
-          </li>
-          <li class="carousel__slide">
-            <img src="./assets/images/carousel-3.png" alt="Афиша выставки 'От Дюрера до Матисса - Избранные рисунки из собрания ГМИИ им. А.С. Пушкина">
-            <button class="btn btn-primary carousel__action-btn">Билеты онлайн</button>
-          </li>
-        </ul>
+        <section class="carousel__content">
+          <button class="carousel__arrow-btn carousel__arrow-btn--prev" id="carousel-btn-prev"></button>
+          <ul class="carousel__slide-container">
+            <li class="carousel__slide" style="background-image: url(./assets/images/carousel-1.png);">
+              <h3 class="visually-hidden">Афиша выставки 'От Дюрера до Матисса - Избранные рисунки из собрания ГМИИ им. А.С. Пушкина</h3>
+              <button class="btn btn-primary carousel__action-btn">Билеты онлайн</button>
+            </li>
+            <li class="carousel__slide" style="background-image: url(./assets/images/carousel-2.png);">
+              <h3 class="visually-hidden">Афиша выставки "Московская жизнь Джамбаттисты Тьеполо и его сына Джандоменико"</h3>
+              <button class="btn btn-primary carousel__action-btn">Билеты онлайн</button>
+            </li>
+            <li class="carousel__slide" style="background-image: url(./assets/images/carousel-3.png);">
+              <h3 class="visually-hidden">Афиша выставки "Реклама как искусство. Британский постер конца 19-го - начала 20го века"</h3>
+              <button class="btn btn-primary carousel__action-btn">Билеты онлайн</button>
+            </li>
+          </ul>
+          <button class="carousel__arrow-btn carousel__arrow-btn--next" id="carousel-btn-next"></button>
+        </section>
         <div class="visually-hidden" id="carousel-liveregion" aria-live="polite" aria-atomic="true"></div>
         <ul class="carousel__nav no-decoration-list" id="carousel-navigation">
           <li>
@@ -249,13 +251,13 @@
               <span>Email</span>
               <input class="material-input" id="email" type="email">
             </label>
-            <button class="btn btn-primary" id="subscription-form-submit" type="submit">Подписаться</button>
           </div>
           <label class="check">
             <input class="check__input" type="checkbox" id="agreement">
             <span class="check__box"></span>
             Согласен на обработку персональных данных
           </label>
+          <button class="btn btn-primary" id="subscription-form-submit" type="submit">Подписаться</button>
         </form>
       </section>
     </div>

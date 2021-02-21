@@ -46,12 +46,6 @@ fieldset {
   grid-template-columns: 1fr 1fr;
 }
 
-.col-3 {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  grid-column-gap: 1em;
-}
-
 .full-width {
   width: 100%;
 }
