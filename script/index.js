@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const modal = document.querySelector('#modal');
   const modalMask = document.querySelector('#modal-mask');
   const loginBtn = document.querySelector('#login-btn');
+  const modalCloseBtn = document.querySelector('#modal-close-btn');
   const eventsContainerEl = document.querySelector('#events-container');
   const eventsFilterForm = document.querySelector('#events-filter-form');
   const museumSectionTabList = document.querySelector('#museum-section__tablist');
@@ -15,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // MODAL
   loginBtn.addEventListener('click', openModal);
+  modalCloseBtn.addEventListener('click', closeModal);
   let previousActiveElement;
 
   function openModal() {
@@ -51,14 +53,14 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // CAROUSEL
-    const carousel = document.querySelector('#carousel');
-    const slides = carousel.querySelectorAll('.carousel__slide');
-    const prevButton = document.querySelector('#carousel-btn-prev');
-    const nextButton = document.querySelector('#carousel-btn-next');
-    const carouselNav = document.querySelector('#carousel-navigation');
-    const carouselNavButtons = carouselNav.querySelectorAll('.carousel__nav-btn');
-    const carouselNavStartBtn = carouselNav.querySelector('[data-action="start"]');
-    const carouselNavStopBtn = carouselNav.querySelector('[data-action="stop"]');
+  const carousel = document.querySelector('#carousel');
+  const slides = carousel.querySelectorAll('.carousel__slide');
+  const prevButton = document.querySelector('#carousel-btn-prev');
+  const nextButton = document.querySelector('#carousel-btn-next');
+  const carouselNav = document.querySelector('#carousel-navigation');
+  const carouselNavButtons = carouselNav.querySelectorAll('.carousel__nav-btn');
+  const carouselNavStartBtn = carouselNav.querySelector('[data-action="start"]');
+  const carouselNavStopBtn = carouselNav.querySelector('[data-action="stop"]');
     // const carouselLiveregion = document.querySelector('#carousel-liveregion');
   class MyCarousel {
     constructor() {
@@ -309,7 +311,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   createEventCardList();
 
-  // MUSEUM
+  // MUSEUM SECTION
   const MUSEUM_SECTION_TABS = Array.from(museumSectionTabList.children)
     .reduce((acc, child) => {
       if (child.getAttribute('role') !== 'tab') return acc;

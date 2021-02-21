@@ -32,7 +32,7 @@
     aria-labelledby="loginModalHeadingId" 
     tabindex="-1"
   >
-    <div class="modal-dialog">
+    <div class="modal__dialog">
       <div class="full-width">
         <h2 id="loginModalHeadingId">Вход</h2>
       </div>
@@ -47,8 +47,9 @@
         </label>
         <button class="btn btn-secondary login-form-btn" aria-haspopup="true" type="submit">Вход</button>
       </form>
+      <button class="modal__close" id="modal-close-btn" aria-label="Close">×</button>
     </div>
-    <div class="modal-mask" id="modal-mask"></div>
+    <div class="modal__mask" id="modal-mask"></div>
   </div>
   <a id="skip-to-main" class="btn btn-secondary no-underline" href="#main">Skip to main</a>
   <header class="container">
@@ -78,7 +79,7 @@
       </ul>
     </nav>
   </header>
-  <main class="container">
+  <main class="container" id="main">
     <!-- <h1>TODO: Add main title</h1> -->
     <section class="content-section">
       <section class="carousel" id="carousel">
@@ -253,7 +254,7 @@
             </label>
           </div>
           <label class="check">
-            <input class="check__input" type="checkbox" id="agreement">
+            <input class="check__input" type="checkbox" id="agreement" required>
             <span class="check__box"></span>
             Согласен на обработку персональных данных
           </label>
