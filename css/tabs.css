@@ -14,3 +14,11 @@
   background: var(--light-color);
   text-decoration: none;
 }
+
+@media only screen and (max-width: 800px) {
+  .tablist {
+    display: flex;
+    justify-content: center;
+    flex-basis: 100%;
+  }
+}

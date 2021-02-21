@@ -20,6 +20,14 @@ fieldset {
   border: none;
 }
 
+a {
+  color: var(--main-color);
+}
+
+a:visited {
+  color: #2e1f49;
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -33,7 +41,7 @@ fieldset {
 
 .container {
   width: 100%;
-  max-width: 1000px;
+  max-width: 1100px;
   margin: 0 auto;
 }
 
@@ -51,6 +59,7 @@ fieldset {
 }
 
 .content-section {
+  padding: 0 10px;
   margin-bottom: 4rem;
 }
 
@@ -82,4 +91,48 @@ fieldset {
 
 #skip-to-main:focus {
   top: 10px;
+}
+
+.filter {
+  margin-bottom: 10px;
+}
+
+@media only screen and (max-width: 800px) {
+  .content-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .content-section h2 {
+    flex-basis: 100%;
+    text-align: center;
+  }
+
+  .filter {
+    display: flex;
+    flex-basis: 100%;
+    justify-content: center;
+  }
+  
+  .actions {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .actions button {
+    margin-bottom: 10px;
+  }
+
+  .col-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .actions button {
+    flex-basis: 100%;
+  }
 }

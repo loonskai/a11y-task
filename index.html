@@ -53,13 +53,13 @@
   <a id="skip-to-main" class="btn btn-secondary no-underline" href="#main">Skip to main</a>
   <header class="container">
     <section class="header">
-      <div>
+      <div class="header__logo">
         <img src="./assets/images/logo.png" alt="Логотип Государственного музея Пушкина">
       </div>
-      <div class="controls-container">
-        <form class="search-form" role="search">
-          <img class="search-icon" src="./assets/images/search-icon.svg">
-          <input class="search-input" type="search" aria-label="search text">
+      <div class="header__controls">
+        <form class="header__search" role="search">
+          <img class="header__search-icon" src="./assets/images/search-icon.svg">
+          <input class="header__search-input" type="search" aria-label="search text">
         </form>
         <nav aria-label="Выбрать язык">
           <span class="btn btn-secondary" aria-label="Русский">RU</span>
@@ -71,10 +71,10 @@
       </div>
     </section>
     <nav role="navigation">
-      <ul class="navigation no-decoration-list">
-        <li class="navigation-link-container"><a href="#museum">Музей</a></li>
-        <li class="navigation-link-container"><a href="#museum">Посетителям</a></li>
-        <li class="navigation-link-container"><a href="#museum">Выставки и события</a></li>
+      <ul class="header__nav-list no-decoration-list">
+        <li class="header__nav-item"><a href="#museum">Музей</a></li>
+        <li class="header__nav-item"><a href="#museum">Посетителям</a></li>
+        <li class="header__nav-item"><a href="#museum">Выставки и события</a></li>
       </ul>
     </nav>
   </header>
@@ -136,7 +136,7 @@
     </section>
     <section class="content-section">
       <h2>Выставки и события</h2>
-      <form id="events-filter-form">
+      <form class="filter" id="events-filter-form">
         <fieldset role="tablist">
           <label class="radio option">
             <input class="radio__input" type="radio" value="ALL" name="dateFilter" checked>
