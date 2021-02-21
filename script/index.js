@@ -50,7 +50,135 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // EVENTS
+  // CAROUSEL
+    const carousel = document.querySelector('#carousel');
+    const slides = carousel.querySelectorAll('.carousel__slide');
+    const prevButton = document.querySelector('#carousel-btn-prev');
+    const nextButton = document.querySelector('#carousel-btn-next');
+    const carouselNav = document.querySelector('#carousel-navigation');
+    const carouselNavButtons = carouselNav.querySelectorAll('.carousel__nav-btn');
+    // const carouselLiveregion = document.querySelector('#carousel-liveregion');
+  class MyCarousel {
+    constructor() {
+      // this.DURATION = 5000;
+      this.DURATION = 1000;
+    }
+    
+    init(settings) {
+      this.current = 0;
+      this.settings = settings;
+      prevButton.addEventListener('click', function () {
+        this.prevSlide(true);
+      });
+      nextButton.addEventListener('click', function () {
+        this.nextSlide(true);
+      });
+
+      carouselNav.addEventListener('click', ({ target }) => {
+        if (target.nodeName.toLowerCase() !== 'button') return;
+        if (target.getAttribute('data-slide')) {
+          this.stopAnimation();
+          this.setSlides(target.getAttribute('data-slide'), true);
+        } else if (target.getAttribute('data-action') === "stop") {
+          this.stopAnimation();
+        } else if (target.getAttribute('data-action') === "start") {
+          this.startAnimation();
+        }
+      }, true);
+
+      if (settings.startAnimated) {
+        this.timer = setTimeout(() => this.nextSlide(), this.DURATION);
+      }
+    }
+
+    startAnimation() {
+      this.settings.animate = true;
+      this.timer = setTimeout(() => this.nextSlide(), this.DURATION);
+    }
+
+    stopAnimation() {
+      clearTimeout(this.timer);
+      this.settings.animate = false;
+    }
+
+    setSlides({
+      newCurrent,
+      setFocus = false,
+      transition = 'none',
+      announceItem = false,
+    }) {
+      const length = slides.length;
+      let newNext = newCurrent + 1;
+      let newPrev = newCurrent - 1;
+      if (newNext === length) {
+        newNext = 0;
+      } else if(newPrev < 0) {
+        newPrev = length - 1;
+      }
+
+      Array.from(slides).forEach(slide => {
+        slide.className = 'carousel__slide';
+      });
+
+      slides[newNext].className = 'carousel__slide' + ((transition == 'next') ? ' in-transition' : '');
+      slides[newPrev].className = 'carousel__slide' + ((transition == 'prev') ? ' in-transition' : '');
+      slides[newCurrent].className = 'carousel__slide carousel__slide--active';
+
+      slides[newNext].setAttribute('aria-hidden', 'true');
+      slides[newPrev].setAttribute('aria-hidden', 'true');
+      slides[newCurrent].removeAttribute('aria-hidden');
+
+      Array.from(carouselNavButtons).forEach((navButton, idx) => {
+        navButton.className = 'carousel__nav-btn';
+        navButton.innerHTML = '<span class="visually-hidden">News</span> ' + (idx + 1);
+      });
+
+      carouselNavButtons[newCurrent].className = "carousel__nav-btn carousel__nav-btn--active";
+      carouselNavButtons[newCurrent].innerHTML = '<span class="visually-hidden">News</span> ' + (newCurrent + 1) + ' <span class="visually-hidden">(Current Item)</span>';
+
+      this.current = newCurrent;
+    }
+
+    nextSlide(announceItem = false) {
+      let newCurrent = this.current + 1;
+      if (newCurrent === slides.length) {
+        newCurrent = 0;
+      }
+
+      this.setSlides({
+        newCurrent,
+        setFocus: false,
+        transition: 'prev',
+        announceItem
+      });
+
+      if (this.settings.animate) {
+        this.timer = setTimeout(() => this.nextSlide(), this.DURATION);
+      }
+    }
+
+    prevSlide(announceItem = false) {
+      let newCurrent = this.current + 1;
+      if (newCurrent < 0) {
+        newCurrent = slides.length - 1;
+      }
+
+      this.setSlides({
+        newCurrent,
+        setFocus: false,
+        transition: 'next',
+        announceItem
+      });
+    }
+  }
+
+  const myCarousel = new MyCarousel();
+  myCarousel.init({
+    startAnimated: true,
+    animate: true
+  });
+
+  // EVENTS SECTION
   const EVENT_FILTERS = {
     ALL: 'ALL',
     TODAY: 'TODAY',

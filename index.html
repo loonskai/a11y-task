@@ -17,8 +17,8 @@
   <link rel="stylesheet" href="./css/forms.css">
   <link rel="stylesheet" href="./css/cards.css">
   <link rel="stylesheet" href="./css/lists.css">
-  <link rel="stylesheet" href="./css/slider.css">
   <link rel="stylesheet" href="./css/iframe.css">
+  <link rel="stylesheet" href="./css/carousel.css">
   <link rel="stylesheet" href="./css/links.css">
   <link rel="stylesheet" href="./css/footer.css">
   <title>Hello!</title>
@@ -81,14 +81,54 @@
   <main class="container">
     <!-- <h1>TODO: Add main title</h1> -->
     <section class="content-section">
-      <div class="slider">
-        <button class="slider-arrow-btn slider-arrow-btn--left"></button>
-        <button class="slider-arrow-btn slider-arrow-btn--right"></button>
-        <div class="slide">
-          <img src="./assets/images/slider-1.png" alt="">
-          <button class="btn btn-primary slider-action-btn">Билеты онлайн</button>
-        </div>
-      </div>
+      <section class="carousel" id="carousel">
+        <button class="carousel__arrow-btn carousel__arrow-btn--prev" id="carousel-btn-prev"></button>
+        <button class="carousel__arrow-btn carousel__arrow-btn--next" id="carousel-btn-next"></button>
+        <ul>
+          <li class="carousel__slide">
+            <img src="./assets/images/carousel-1.png" alt="Афиша выставки 'От Дюрера до Матисса - Избранные рисунки из собрания ГМИИ им. А.С. Пушкина">
+            <button class="btn btn-primary carousel__action-btn">Билеты онлайн</button>
+          </li>
+          <li class="carousel__slide">
+            <img src="./assets/images/carousel-2.png" alt="Афиша выставки 'От Дюрера до Матисса - Избранные рисунки из собрания ГМИИ им. А.С. Пушкина">
+            <button class="btn btn-primary carousel__action-btn">Билеты онлайн</button>
+          </li>
+          <li class="carousel__slide">
+            <img src="./assets/images/carousel-3.png" alt="Афиша выставки 'От Дюрера до Матисса - Избранные рисунки из собрания ГМИИ им. А.С. Пушкина">
+            <button class="btn btn-primary carousel__action-btn">Билеты онлайн</button>
+          </li>
+        </ul>
+        <div class="visually-hidden" id="carousel-liveregion" aria-live="polite" aria-atomic="true"></div>
+        <ul class="carousel__nav no-decoration-list" id="carousel-navigation">
+          <li>
+            <button class="carousel__nav-control-btn" data-action="stop">
+              <span class="visually-hidden">Stop Animation</span>
+              <svg xmlns="http://www.w3.org/2000/svg" height="8" width="8" viewBox="0 0 10 10">
+                <path d="M512 768H0V256h512V768z"/>
+              </svg>
+            </button>
+            <button class="carousel__nav-control-btn" data-action="start">
+              <span class="visually-hidden">Start Animation</span>▶
+            </button>
+          </li>
+          <li>
+            <button class="carousel__nav-btn carousel__nav-btn--active" data-slide="0">
+              <span class="visually-hidden">Foo</span>1
+              <span class="visually-hidden">(Current Slide)</span>
+            </button>
+          </li>
+          <li>
+            <button class="carousel__nav-btn" data-slide="1">
+              <span class="visually-hidden">Bar</span>2
+            </button>
+          </li>
+          <li>
+            <button class="carousel__nav-btn" data-slide="2">
+              <span class="visually-hidden">Baz</span>3
+            </button>
+          </li>
+        </ul>
+      </section>
       <div class="actions">
         <button class="btn btn-primary">Купить билет</button>
         <button class="btn btn-primary">Стать другом</button>
