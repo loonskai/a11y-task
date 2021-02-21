@@ -57,6 +57,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const nextButton = document.querySelector('#carousel-btn-next');
     const carouselNav = document.querySelector('#carousel-navigation');
     const carouselNavButtons = carouselNav.querySelectorAll('.carousel__nav-btn');
+    const carouselNavStartBtn = carouselNav.querySelector('[data-action="start"]');
+    const carouselNavStopBtn = carouselNav.querySelector('[data-action="stop"]');
     // const carouselLiveregion = document.querySelector('#carousel-liveregion');
   class MyCarousel {
     constructor() {
@@ -79,13 +81,18 @@ document.addEventListener('DOMContentLoaded', () => {
         if (target.getAttribute('data-slide')) {
           this.stopAnimation();
           this.setSlides(target.getAttribute('data-slide'), true);
-        } else if (target.getAttribute('data-action') === "stop") {
+        } else if (target === carouselNavStopBtn) {
           this.stopAnimation();
-        } else if (target.getAttribute('data-action') === "start") {
+        } else if (target === carouselNavStartBtn) {
           this.startAnimation();
         }
       }, true);
 
+      slides[0].classList.add('carousel__slide--active');
+      slides[1].classList.add('carousel__slide--next');
+      slides[slides.length - 1].classList.add('carousel__slide--prev');
+
+      this.toggleNavigationControl(settings.startAnimated);
       if (settings.startAnimated) {
         this.timer = setTimeout(() => this.nextSlide(), this.DURATION);
       }
@@ -93,12 +100,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     startAnimation() {
       this.settings.animate = true;
+      this.toggleNavigationControl(true);
       this.timer = setTimeout(() => this.nextSlide(), this.DURATION);
     }
 
     stopAnimation() {
-      clearTimeout(this.timer);
       this.settings.animate = false;
+      this.toggleNavigationControl(false);
+      clearTimeout(this.timer);
     }
 
     setSlides({
@@ -120,8 +129,8 @@ document.addEventListener('DOMContentLoaded', () => {
         slide.className = 'carousel__slide';
       });
 
-      slides[newNext].className = 'carousel__slide' + ((transition == 'next') ? ' in-transition' : '');
-      slides[newPrev].className = 'carousel__slide' + ((transition == 'prev') ? ' in-transition' : '');
+      slides[newNext].className = 'carousel__slide carousel__slide--next' + ((transition == 'next') ? ' in-transition' : '');
+      slides[newPrev].className = 'carousel__slide carousel__slide--prev' + ((transition == 'prev') ? ' in-transition' : '');
       slides[newCurrent].className = 'carousel__slide carousel__slide--active';
 
       slides[newNext].setAttribute('aria-hidden', 'true');
@@ -169,6 +178,16 @@ document.addEventListener('DOMContentLoaded', () => {
         transition: 'next',
         announceItem
       });
+    }
+
+    toggleNavigationControl(isRunning = false) {
+      if (isRunning) {
+        carouselNavStopBtn.classList.remove('visually-hidden');
+        carouselNavStartBtn.classList.add('visually-hidden');
+      } else {
+        carouselNavStopBtn.classList.add('visually-hidden');
+        carouselNavStartBtn.classList.remove('visually-hidden');
+      }
     }
   }
 

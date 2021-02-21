@@ -3,12 +3,18 @@
   width: 100%;
   max-width: 1200px;
   margin: 10px auto;
+  padding-top: 590px;
+
 }
 
 .carousel__slide {
+  /* display: none; */
+  top: 0;
   overflow: hidden;
   width: 100%;
-  height: 450px;
+  height: 590px;
+  position: absolute;
+  visibility: hidden;
 }
 
 .carousel__slide img {
@@ -16,7 +22,16 @@
 }
 
 .carousel__slide--active {
-  
+  visibility: visible;
+  left: 0;
+}
+
+.carousel__slide--next {
+  left: 100%;
+}
+
+.carousel__slide--prev {
+  left: -100%;
 }
 
 .carousel__arrow-btn {
