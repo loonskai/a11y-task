@@ -80,7 +80,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (target.nodeName.toLowerCase() !== 'button') return;
         if (target.getAttribute('data-slide')) {
           this.stopAnimation();
-          this.setSlides(target.getAttribute('data-slide'), true);
+          this.setSlides({
+            newCurrent: parseInt(target.getAttribute('data-slide'), 10),
+            setFocus: true,
+          });
         } else if (target === carouselNavStopBtn) {
           this.stopAnimation();
         } else if (target === carouselNavStartBtn) {
@@ -129,8 +132,8 @@ document.addEventListener('DOMContentLoaded', () => {
         slide.className = 'carousel__slide';
       });
 
-      slides[newNext].className = 'carousel__slide carousel__slide--next' + ((transition == 'next') ? ' in-transition' : '');
-      slides[newPrev].className = 'carousel__slide carousel__slide--prev' + ((transition == 'prev') ? ' in-transition' : '');
+      slides[newNext].className = `carousel__slide carousel__slide--next ${transition === 'next' ? 'in-transition' : ''}`.trim();
+      slides[newPrev].className = `carousel__slide carousel__slide--prev ${transition === 'prev' ? 'in-transition' : ''}`.trim();
       slides[newCurrent].className = 'carousel__slide carousel__slide--active';
 
       slides[newNext].setAttribute('aria-hidden', 'true');
@@ -182,18 +185,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     toggleNavigationControl(isRunning = false) {
       if (isRunning) {
-        carouselNavStopBtn.classList.remove('visually-hidden');
-        carouselNavStartBtn.classList.add('visually-hidden');
+        carouselNavStopBtn.style.display = '';
+        carouselNavStartBtn.style.display = 'none';
       } else {
-        carouselNavStopBtn.classList.add('visually-hidden');
-        carouselNavStartBtn.classList.remove('visually-hidden');
+        carouselNavStopBtn.style.display = 'none';
+        carouselNavStartBtn.style.display = '';
       }
     }
   }
 
   const myCarousel = new MyCarousel();
   myCarousel.init({
-    startAnimated: true,
+    startAnimated: false,
     animate: true
   });
 
