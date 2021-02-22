@@ -99,13 +99,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const carouselNavControlsItem = carouselNav.querySelectorAll('.carousel__nav-controls-item');
   const carouselNavStartBtn = carouselNav.querySelector('[data-action="start"]');
   const carouselNavStopBtn = carouselNav.querySelector('[data-action="stop"]');
-    // const carouselLiveregion = document.querySelector('#carouselLiveregion');
   class MyCarousel {
     constructor() {
       this.DURATION = 5000;
-      this.animationSuspended = false;
-      this.hasHover = false;
-      this.hasFocus = false;
     }
     
     init(settings) {
@@ -145,40 +141,12 @@ document.addEventListener('DOMContentLoaded', () => {
         target.classList.remove('in-transition');
       });
 
-      carousel.addEventListener('mouseenter', () => {
-        this.hasHover = true;
-        this.suspendAnimation();
-        this.updateRotation();
-      });
-      carousel.addEventListener('mouseleave', () => {
-        this.hasHover = false;
-        if (this.animationSuspended) { 
-          this.startAnimation();
-          this.updateRotation();
-        }
-      });
       carousel.addEventListener('focusin', ({ target }) => {
-        console.dir('focusin')
-        console.dir(target)
-        console.dir('-----------')
-        this.hasFocus = true;
-        this.suspendAnimation();
-        this.updateRotation();
-        
-        // if (!hasClass(event.target, 'slide')) {
-          //   suspendAnimation();
-          // }
-        });
-        
-        // When the focus leaves the carousel, and the animation is suspended, start the animation
-        carousel.addEventListener('focusout', ({ target }) => {
-        this.hasFocus = false;
-        console.dir('focusout')
-        console.dir(target)
-        console.dir('-----------')
-        // if (!hasClass(event.target, 'slide') && animationSuspended) {
-        //   startAnimation();
-        // }
+        this.stopAnimation();
+      });
+      
+      carousel.addEventListener('focusout', ({ target }) => {
+        this.startAnimation();
       });
 
       slides[0].classList.add('carousel__slide--active');
@@ -190,36 +158,16 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    updateRotation() {
-      if (this.hasHover || this.hasFocus) {
-        this.rotate = true;
-        carouselItems.setAttribute('aria-live', 'polite');
-      } else {
-        this.rotate = false;
-        carouselItems.setAttribute('aria-live', 'off');
-      }
-    }
-
     startAnimation() {
       this.settings.animate = true;
-      this.animationSuspended = false;
       this.toggleNavigationControl(true);
       this.timer = setTimeout(() => this.nextSlide(), this.DURATION);
     }
     
     stopAnimation() {
       this.settings.animate = false;
-      this.animationSuspended = false;
       this.toggleNavigationControl(false);
       clearTimeout(this.timer);
-    }
-
-    suspendAnimation() {
-      if (!this.settings.animate) return;
-      clearTimeout(this.timer);
-      this.settings.animate = false;
-      this.animationSuspended = true;
-      this.toggleNavigationControl(false);
     }
 
     setSlides({
@@ -294,9 +242,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     toggleNavigationControl(isRunning = false) {
       if (isRunning) {
-        carouselNavStopBtn.style.display = '';
+        carouselItems.setAttribute('aria-live', 'off');
         carouselNavStartBtn.style.display = 'none';
+        carouselNavStopBtn.style.display = '';
       } else {
+        carouselItems.setAttribute('aria-live', 'polite');
         carouselNavStopBtn.style.display = 'none';
         carouselNavStartBtn.style.display = '';
       }
