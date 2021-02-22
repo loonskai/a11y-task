@@ -115,52 +115,89 @@
   <main class="container" id="main">
     <h1 class="visually-hidden">Афиша Государственного музея изобразительных искусств имени А.С.Пушкина</h1>
     <section class="content-section">
-      <section class="carousel" id="carousel">
-        <section class="carousel__content">
-          <button class="carousel__arrow-btn carousel__arrow-btn--prev" id="carouselPrevBtn"></button>
-          <button class="carousel__arrow-btn carousel__arrow-btn--next" id="carouselNextBtn"></button>
-          <ul class="carousel__slide-container">
-            <li class="carousel__slide" style="background-image: url(./assets/images/carousel-1.png);">
-              <h3 class="visually-hidden">Афиша выставки 'От Дюрера до Матисса - Избранные рисунки из собрания ГМИИ им. А.С. Пушкина</h3>
-              <button class="btn btn-primary carousel__action-btn">Билеты онлайн</button>
+      <section 
+        class="carousel" 
+        id="carousel"
+        aria-label="Главные события"
+        aria-roledescription="carousel"
+      >
+        <section class="carousel__nav">
+          <ul class="carousel__nav-controls no-decoration-list" id="carouselNav">
+            <li>
+              <button class="carousel__nav-control" data-action="stop">
+                <span class="visually-hidden">Остановить анимацию</span>
+                <span aria-hidden="true">◼</span>
+              </button>
+              <button class="carousel__nav-control" data-action="start">
+                <span class="visually-hidden">Воспроизвести анимацию</span>
+                <span aria-hidden="true">▶</span>
+              </button>
             </li>
-            <li class="carousel__slide" style="background-image: url(./assets/images/carousel-2.png);">
-              <h3 class="visually-hidden">Афиша выставки "Московская жизнь Джамбаттисты Тьеполо и его сына Джандоменико"</h3>
-              <button class="btn btn-primary carousel__action-btn">Билеты онлайн</button>
+            <li>
+              <button class="carousel__nav-controls-item carousel__nav-controls-item--active" data-slide="0">
+                <span class="visually-hidden">Афиша </span>1
+                <span class="visually-hidden">(Текущий слайд)</span>
+              </button>
             </li>
-            <li class="carousel__slide" style="background-image: url(./assets/images/carousel-3.png);">
-              <h3 class="visually-hidden">Афиша выставки "Реклама как искусство. Британский постер конца 19-го - начала 20го века"</h3>
-              <button class="btn btn-primary carousel__action-btn">Билеты онлайн</button>
+            <li>
+              <button class="carousel__nav-controls-item" data-slide="1">
+                <span class="visually-hidden">Афиша </span>2
+              </button>
+            </li>
+            <li>
+              <button class="carousel__nav-controls-item" data-slide="2">
+                <span class="visually-hidden">Афиша </span>3
+              </button>
             </li>
           </ul>
+          <div class="carousel__nav-arrows">
+            <button 
+              class="carousel__nav-arrow carousel__nav-arrow--prev" 
+              aria-label="Предыдущая афиша" 
+              aria-controls="carouselItems" 
+              id="carouselPrevBtn"
+            ></button>
+            <button 
+              class="carousel__nav-arrow carousel__nav-arrow--next" 
+              aria-label="Следующая афиша" 
+              aria-controls="carouselItems"
+              id="carouselNextBtn"
+            ></button>
+          </div>
         </section>
-        <div class="visually-hidden" aria-live="polite" aria-atomic="true" id="carouselLiveregion"></div>
-        <ul class="carousel__nav no-decoration-list" id="carouselNav">
-          <li>
-            <button class="carousel__nav-control-btn" data-action="stop">
-              <span class="visually-hidden">Stop Animation</span>◼
-            </button>
-            <button class="carousel__nav-control-btn" data-action="start">
-              <span class="visually-hidden">Start Animation</span>▶
-            </button>
+        <ul class="carousel__content" aria-life="off" id="carouselItems">
+          <li
+            style="background-image: url(./assets/images/carousel-1.png);"
+            class="carousel__slide"
+            role="group"
+            aria-roledescription="slide"
+            aria-label="1 из 3"
+          >
+            <h3 class="visually-hidden">Афиша выставки 'От Дюрера до Матисса - Избранные рисунки из собрания ГМИИ им. А.С. Пушкина</h3>
+            <a class="btn btn-primary carousel__action-btn" href="/blank.html" target="_blank" rel="noreferrer">Билеты онлайн</a>
           </li>
-          <li>
-            <button class="carousel__nav-btn carousel__nav-btn--active" data-slide="0">
-              <span class="visually-hidden">Foo</span>1
-              <span class="visually-hidden">(Current Slide)</span>
-            </button>
+          <li 
+            style="background-image: url(./assets/images/carousel-2.png);"
+            class="carousel__slide"
+            role="group"
+            aria-roledescription="slide"
+            aria-label="2 из 3"
+          >
+            <h3 class="visually-hidden">Афиша выставки "Московская жизнь Джамбаттисты Тьеполо и его сына Джандоменико"</h3>
+            <a class="btn btn-primary carousel__action-btn" href="/blank.html" target="_blank" rel="noreferrer">Билеты онлайн</a>
           </li>
-          <li>
-            <button class="carousel__nav-btn" data-slide="1">
-              <span class="visually-hidden">Bar</span>2
-            </button>
-          </li>
-          <li>
-            <button class="carousel__nav-btn" data-slide="2">
-              <span class="visually-hidden">Baz</span>3
-            </button>
+          <li
+            style="background-image: url(./assets/images/carousel-3.png);"
+            class="carousel__slide"
+            role="group"
+            aria-roledescription="slide"
+            aria-label="3 из 3"
+          >
+            <h3 class="visually-hidden">Афиша выставки "Реклама как искусство. Британский постер конца 19-го - начала 20го века"</h3>
+            <a class="btn btn-primary carousel__action-btn" href="/blank.html" target="_blank" rel="noreferrer">Билеты онлайн</a>
           </li>
         </ul>
+        <div class="visually-hidden" aria-live="polite" aria-atomic="true" id="carouselLiveregion"></div>
       </section>
       <div class="actions">
         <button class="btn btn-primary">Купить билет</button>

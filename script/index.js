@@ -94,14 +94,18 @@ document.addEventListener('DOMContentLoaded', () => {
   const slides = carousel.querySelectorAll('.carousel__slide');
   const prevButton = document.querySelector('#carouselPrevBtn');
   const nextButton = document.querySelector('#carouselNextBtn');
+  const carouselItems = document.querySelector('#carouselItems');
   const carouselNav = document.querySelector('#carouselNav');
-  const carouselNavButtons = carouselNav.querySelectorAll('.carousel__nav-btn');
+  const carouselNavControlsItem = carouselNav.querySelectorAll('.carousel__nav-controls-item');
   const carouselNavStartBtn = carouselNav.querySelector('[data-action="start"]');
   const carouselNavStopBtn = carouselNav.querySelector('[data-action="stop"]');
     // const carouselLiveregion = document.querySelector('#carouselLiveregion');
   class MyCarousel {
     constructor() {
       this.DURATION = 5000;
+      this.animationSuspended = false;
+      this.hasHover = false;
+      this.hasFocus = false;
     }
     
     init(settings) {
@@ -116,21 +120,65 @@ document.addEventListener('DOMContentLoaded', () => {
         this.nextSlide(true);
       });
       carouselNav.addEventListener('click', ({ target }) => {
-        if (target.nodeName.toLowerCase() !== 'button') return;
-        if (target.getAttribute('data-slide')) {
+        let navButton;
+        console.log(target.getAttribute('aria-hidden'));
+        if (target.nodeName.toLowerCase() === 'button') {
+          navButton = target;
+        } else if (target.nodeName.toLowerCase() === 'span' && target.getAttribute('aria-hidden') === 'true') {
+          navButton = target.parentNode;
+        }
+        if (!navButton) return;
+
+        if (navButton.getAttribute('data-slide')) {
           this.stopAnimation();
           this.setSlides({
-            newCurrent: parseInt(target.getAttribute('data-slide'), 10),
+            newCurrent: parseInt(navButton.getAttribute('data-slide'), 10),
             setFocus: true,
           });
-        } else if (target === carouselNavStopBtn) {
+        } else if (navButton === carouselNavStopBtn) {
           this.stopAnimation();
-        } else if (target === carouselNavStartBtn) {
+        } else if (navButton === carouselNavStartBtn) {
           this.startAnimation();
         }
       }, true);
       carousel.addEventListener('transitionend', ({ target }) => {
         target.classList.remove('in-transition');
+      });
+
+      carousel.addEventListener('mouseenter', () => {
+        this.hasHover = true;
+        this.suspendAnimation();
+        this.updateRotation();
+      });
+      carousel.addEventListener('mouseleave', () => {
+        this.hasHover = false;
+        if (this.animationSuspended) { 
+          this.startAnimation();
+          this.updateRotation();
+        }
+      });
+      carousel.addEventListener('focusin', ({ target }) => {
+        console.dir('focusin')
+        console.dir(target)
+        console.dir('-----------')
+        this.hasFocus = true;
+        this.suspendAnimation();
+        this.updateRotation();
+        
+        // if (!hasClass(event.target, 'slide')) {
+          //   suspendAnimation();
+          // }
+        });
+        
+        // When the focus leaves the carousel, and the animation is suspended, start the animation
+        carousel.addEventListener('focusout', ({ target }) => {
+        this.hasFocus = false;
+        console.dir('focusout')
+        console.dir(target)
+        console.dir('-----------')
+        // if (!hasClass(event.target, 'slide') && animationSuspended) {
+        //   startAnimation();
+        // }
       });
 
       slides[0].classList.add('carousel__slide--active');
@@ -142,16 +190,36 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
+    updateRotation() {
+      if (this.hasHover || this.hasFocus) {
+        this.rotate = true;
+        carouselItems.setAttribute('aria-live', 'polite');
+      } else {
+        this.rotate = false;
+        carouselItems.setAttribute('aria-live', 'off');
+      }
+    }
+
     startAnimation() {
       this.settings.animate = true;
+      this.animationSuspended = false;
       this.toggleNavigationControl(true);
       this.timer = setTimeout(() => this.nextSlide(), this.DURATION);
     }
-
+    
     stopAnimation() {
       this.settings.animate = false;
+      this.animationSuspended = false;
       this.toggleNavigationControl(false);
       clearTimeout(this.timer);
+    }
+
+    suspendAnimation() {
+      if (!this.settings.animate) return;
+      clearTimeout(this.timer);
+      this.settings.animate = false;
+      this.animationSuspended = true;
+      this.toggleNavigationControl(false);
     }
 
     setSlides({
@@ -181,13 +249,13 @@ document.addEventListener('DOMContentLoaded', () => {
       slides[newPrev].setAttribute('aria-hidden', 'true');
       slides[newCurrent].removeAttribute('aria-hidden');
 
-      Array.from(carouselNavButtons).forEach((navButton, idx) => {
-        navButton.className = 'carousel__nav-btn';
-        navButton.innerHTML = '<span class="visually-hidden">News</span> ' + (idx + 1);
+      Array.from(carouselNavControlsItem).forEach((navButton, idx) => {
+        navButton.className = 'carousel__nav-controls-item';
+        navButton.innerHTML = '<span class="visually-hidden">Афиша </span> ' + (idx + 1);
       });
 
-      carouselNavButtons[newCurrent].className = "carousel__nav-btn carousel__nav-btn--active";
-      carouselNavButtons[newCurrent].innerHTML = '<span class="visually-hidden">News</span> ' + (newCurrent + 1) + ' <span class="visually-hidden">(Current Item)</span>';
+      carouselNavControlsItem[newCurrent].className = "carousel__nav-controls-item carousel__nav-controls-item--active";
+      carouselNavControlsItem[newCurrent].innerHTML = '<span class="visually-hidden">Афиша </span> ' + (newCurrent + 1) + ' <span class="visually-hidden">(Текущий слайд)</span>';
 
       this.current = newCurrent;
     }

@@ -23,6 +23,10 @@ fieldset {
   border: none;
 }
 
+button {
+  font-family: inherit;
+}
+
 a {
   color: var(--main-color);
 }
