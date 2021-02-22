@@ -25,6 +25,7 @@
   <title>Афиша | Государственный музей изобразительных искусств имени А.С.Пушкина</title>
 </head>
 <body>
+  <a class="btn btn-secondary no-underline" href="#main" id="skipToMain">Skip to main</a>
   <div
     class="alert"
     style="display: none;"
@@ -80,7 +81,6 @@
     </div>
     <div class="modal__mask" id="modalMask"></div>
   </div>
-  <a class="btn btn-secondary no-underline" href="#main" id="skipToMain">Skip to main</a>
   <header class="container">
     <section class="header">
       <div class="header__logo">
@@ -204,8 +204,8 @@
         <button class="btn btn-primary">Онлайн-магазин</button>
       </div>
     </section>
-    <section class="content-section" aria-label="Выставки и события">
-      <h2>Выставки и события</h2>
+    <section class="content-section" aria-labelledby="eventsHeading">
+      <h2 id="eventsHeading">Выставки и события</h2>
       <form class="filter" id="eventsFilterForm">
         <fieldset role="radiogroup">
           <label class="radio option">
@@ -230,8 +230,8 @@
         <ul class="card__container" id="eventsContainer"></ul>
       </section>
     </section>
-    <section class="content-section">
-      <h2>Музей</h2>
+    <section class="content-section" aria-labelledby="museumHeading">
+      <h2 id="museumHeading">Музей</h2>
       <div class="tablist" role="tablist" id="museumSectionTablist">
         <button class="tab tab--active" role="tab" data-value="buildings">Здания</button>
         <button class="tab" role="tab" data-value="history">История</button>
@@ -316,22 +316,25 @@
           <p>В современной экспозиции представлены обширная учебная коллекция тонированных гипсовых слепков с произведений Античности, Средних веков и эпохи Возрождения, а также собрание подлинных произведений живописи, скульптуры, графики и декоративно-прикладного искусства.</p>
           <p>В залах первого этажа Главного здания представлены: произведения искусства Древнего Египта, Античности, собрание европейской живописи VIII–XVIII веков; два зала – Итальянский и Греческий дворики – занимают слепки. На втором этаже Главного здания в залах размещены слепки произведений искусства Древней Греции, Рима, Средних веков и Возрождения.</p>
           <p>В начале 2017 года музей определил новое направление своей деятельности – Пушкинский XXI, – ориентированное на современное российское и западное искусство во всех аспектах – выставочном, образовательном и исследовательском. Таким образом, ГМИИ им. А.С. Пушкина представляет собой открытую, интерактивную сцену, демонстрирующую развитие мировой культуры с древности до наших дней, живое, знакомое с детства пространство для получения знаний и общения.</p>
-          <a href="/blank.html" target="_blank" rel="noreferrer">Читать далее</a>
+          <a href="/blank.html" target="_blank" rel="noreferrer">
+            <span class="visually-hidden">История музея</span>
+            Читать далее
+          </a>
         </div>
       </section>
     </section>
-    <section class="content-section">
-      <h2>Онлайн-трансляции</h2>
+    <section class="content-section" aria-labelledby="onlineSectionHeading">
+      <h2 id="onlineSectionHeading">Онлайн-трансляции</h2>
       <div class="iframe__container">
         <iframe title="search-icon" class="iframe__video" src="https://www.youtube.com/embed/5qRR-5H1XgU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
     </section>
-    <section class="content-section">
-      <h2>Экскурсии и лекции в прямом эфире</h2>
+    <section class="content-section" aria-labelledby="liveLecturesHeading">
+      <h2 id="liveLecturesHeading">Экскурсии и лекции в прямом эфире</h2>
       <div>
         <p>С 1 июля вы можете присоединиться к нашим виртуальным мероприятиям — экскурсиям и лекциям для взрослых и детей, оплатив участие на сайте. Встречи будут проходить в прямом эфире на платформе Zoom; предусмотрен формат живого общения с возможностью задавать вопросы экскурсоводу (лектору).
           <br>
-          <a href="/blank.html" target="_blank" rel="noreferrer">Подробнее.</a>
+          <a aria-label="Виртуальные мероприятия" href="/blank.html" target="_blank" rel="noreferrer">Подробнее.</a>
         </p>
         <p>Мы будем благодарны за любое <a href="/blank.html" target="_blank" rel="noreferrer">пожертвование</a>. Все поступившие средства будут направлены на организацию онлайн-проектов для наших посетителей.</p>
       </div>
@@ -345,7 +348,7 @@
           <li><a href="/blank.html" target="_blank" rel="noreferrer">Билеты и льготы</a></li>
           <li><a href="/blank.html" target="_blank" rel="noreferrer">Противодействие коррупции</a></li>
         </ul>
-        <h3>Соц. сети</h3>
+        <h3 aria-label="Ссылки на социальные сети" id="socialNetworkHeading">Соц. сети</h3>
         <ul class="no-decoration-list flex">
           <li><a class="icon-link" aria-label="Написать на email" href="mail:foo@mail.com" target="_blank" rel="noreferrer"><img src="./assets/images/email-icon.svg" alt=""></a></li>
           <li><a class="icon-link" aria-label="Группа в Facebook" href="https://facebook.com" target="_blank" rel="noreferrer"><img src="./assets/images/fb-icon.svg" alt=""></a></li>
@@ -353,12 +356,12 @@
         </ul>
       </section>
       <section>
-        <h3>Подписка на новости</h3>
+        <h3 id="subscriptionHeading">Подписка на новости</h3>
         <form id="subscriptionForm">
           <div class="col-3">
             <label class="input">
               <span>Email</span>
-              <input class="material-input" type="email" id="email">
+              <input class="material-input" aria-labelledby="subscriptionHeading" type="email" id="email" required>
             </label>
           </div>
           <label class="check">

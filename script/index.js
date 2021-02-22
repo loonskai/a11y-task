@@ -118,7 +118,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
       carouselNav.addEventListener('click', ({ target }) => {
         let navButton;
-        console.log(target.getAttribute('aria-hidden'));
         if (target.nodeName.toLowerCase() === 'button') {
           navButton = target;
         } else if (target.nodeName.toLowerCase() === 'span' && target.getAttribute('aria-hidden') === 'true') {
@@ -144,10 +143,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       carousel.addEventListener('focusin', ({ target }) => {
         this.stopAnimation();
-      });
-      
-      carousel.addEventListener('focusout', ({ target }) => {
-        this.startAnimation();
       });
 
       slides[0].classList.add('carousel__slide--active');
@@ -422,8 +417,19 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   subscriptionForm.addEventListener('change', ({ target }) => {
-    SUBSCRIPTION_FORM_STATE.checked = target.checked;
+    if (target.type === 'checkbox') {
+      SUBSCRIPTION_FORM_STATE.checked = target.checked;
+    }
     updateSubscribsionForm();
+  });
+
+  subscriptionForm.addEventListener('submit', event => {
+    event.preventDefault();
+    alertLiveregion.textContent = 'Вы успешно подписались на обновления!';
+    alertLiveregion.style.display = "block";
+    setTimeout(() => {
+      alertLiveregion.style.display = "none";
+    }, 2000);
   });
 
   function updateSubscribsionForm() {
