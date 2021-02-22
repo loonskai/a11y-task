@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const nextButton = document.querySelector('#carouselNextBtn');
   const carouselItems = document.querySelector('#carouselItems');
   const carouselNav = document.querySelector('#carouselNav');
-  const carouselNavControlsItem = carouselNav.querySelectorAll('.carousel__nav-controls-item');
+  const carouselNavControlItems = carouselNav.querySelectorAll('.carousel__nav-controls-item');
   const carouselNavStartBtn = carouselNav.querySelector('[data-action="start"]');
   const carouselNavStopBtn = carouselNav.querySelector('[data-action="stop"]');
   class MyCarousel {
@@ -198,13 +198,13 @@ document.addEventListener('DOMContentLoaded', () => {
       slides[newPrev].setAttribute('aria-hidden', 'true');
       slides[newCurrent].removeAttribute('aria-hidden');
 
-      Array.from(carouselNavControlsItem).forEach((navButton, idx) => {
+      Array.from(carouselNavControlItems).forEach((navButton, idx) => {
         navButton.className = 'carousel__nav-controls-item';
         navButton.innerHTML = '<span class="visually-hidden">Афиша </span> ' + (idx + 1);
       });
 
-      carouselNavControlsItem[newCurrent].className = "carousel__nav-controls-item carousel__nav-controls-item--active";
-      carouselNavControlsItem[newCurrent].innerHTML = '<span class="visually-hidden">Афиша </span> ' + (newCurrent + 1) + ' <span class="visually-hidden">(Текущий слайд)</span>';
+      carouselNavControlItems[newCurrent].className = "carousel__nav-controls-item carousel__nav-controls-item--active";
+      carouselNavControlItems[newCurrent].innerHTML = '<span class="visually-hidden">Афиша </span> ' + (newCurrent + 1) + ' <span class="visually-hidden">(Текущий слайд)</span>';
 
       this.current = newCurrent;
     }
@@ -311,10 +311,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const eventUrlLink = document.createElement('a');
   const eventUrlLinkText = document.createElement('span');
+  eventUrlLink.appendChild(eventUrlLinkText);
   eventUrlLinkText.textContent = 'Купить билет';
   eventUrlLink.classList.add('card__link');
-  eventUrlLink.appendChild(eventUrlLinkText);
-  eventUrlLink.setAttribute('aria-label', 'Купить билет');
 
   eventsFilterForm.addEventListener('change', ({ target }) => {
     const { value } = target;
@@ -325,6 +324,8 @@ document.addEventListener('DOMContentLoaded', () => {
   let timeout;
   function createEventCardList() {
     if (timeout) clearTimeout(timeout);
+
+    eventsContainer.innerHTML = '';
     eventsLiveregion.classList.add('events__loader--pending');
     eventsLiveregion.classList.remove('events__loader--done');
     eventsLiveregion.innerHTML = 'Загрузка событий...';
@@ -334,7 +335,7 @@ document.addEventListener('DOMContentLoaded', () => {
       eventsLiveregion.classList.remove('events__loader--pending');
       eventsLiveregion.classList.add('events__loader--done');
       eventsLiveregion.innerHTML = `Показано событий: ${eventCardElements.length} из ${EVENTS_STATE.events.length}`;
-      eventsContainer.innerHTML = '';
+
       eventCardElements.forEach(el => eventsContainer.appendChild(el));
     }, 3000);
   }
@@ -399,9 +400,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const activeTabNode = museumSectionTabList.querySelector(`[data-value="${MUSEUM_SECTION_STATE.selected}"]`);
     activeTabNode.classList.add('tab--active');
 
-    const contentSections =  Array.from(museumSectionContent.querySelectorAll('[id^="tab-section"]'));
+    const contentSections =  Array.from(museumSectionContent.querySelectorAll('[id^="tabSection"]'));
     contentSections.forEach(section => {
-      if (section.id === `tab-section--${MUSEUM_SECTION_STATE.selected}`) {
+      if (section.id === `tabSection--${MUSEUM_SECTION_STATE.selected}`) {
         section.style.display = "";
       } else {
         section.style.display = "none";
