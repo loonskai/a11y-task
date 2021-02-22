@@ -309,12 +309,6 @@ document.addEventListener('DOMContentLoaded', () => {
     },
   };
 
-  const eventUrlLink = document.createElement('a');
-  const eventUrlLinkText = document.createElement('span');
-  eventUrlLink.appendChild(eventUrlLinkText);
-  eventUrlLinkText.textContent = 'Купить билет';
-  eventUrlLink.classList.add('card__link');
-
   eventsFilterForm.addEventListener('change', ({ target }) => {
     const { value } = target;
     EVENTS_STATE.filter = value;
@@ -350,28 +344,38 @@ document.addEventListener('DOMContentLoaded', () => {
     url
   }) {
     const cardEl = document.createElement('li');
-    const titleEl = document.createElement('h3');
-    const imgEl = document.createElement('img');
-    const dateNoteEl = document.createElement('h4');
-    const descriptionEl = document.createElement('span');
-    const linkEl = eventUrlLink.cloneNode(true);
-    
-    const titleId = `event-card-${id}`;
-    titleEl.id = titleId;
     cardEl.classList.add('card');
+
+    const imgEl = document.createElement('img');
     imgEl.setAttribute('src', `./assets/images/${img}`);
     imgEl.setAttribute('alt', `./assets/images/${imgAlt}`);
-    titleEl.appendChild(document.createTextNode(title));
-    dateNoteEl.appendChild(document.createTextNode(dateNote));
-    descriptionEl.appendChild(document.createTextNode(description));
-    linkEl.setAttribute('href', url);
-    linkEl.setAttribute('aria-labelledby', titleId);
-
     cardEl.appendChild(imgEl);
+
+    const titleEl = document.createElement('h3');
+    const titleId = `event--${id}`;
+    titleEl.id = titleId;
+    titleEl.textContent = title;
     cardEl.appendChild(titleEl);
-    cardEl.appendChild(dateNoteEl);
+
+    const descriptionEl = document.createElement('span');
+    descriptionEl.textContent = description;
     cardEl.appendChild(descriptionEl);
-    cardEl.appendChild(linkEl);
+
+    const dateNoteEl = document.createElement('h4');
+    dateNoteEl.textContent = dateNote;
+    cardEl.appendChild(dateNoteEl);
+
+    const eventUrlLink = document.createElement('a');
+    eventUrlLink.classList.add('card__link');
+    eventUrlLink.setAttribute('href', url);
+    const eventUrlLinkText = document.createElement('span');
+    eventUrlLinkText.textContent = 'Купить билет';
+    const linkId = `eventLink--${id}`;
+    eventUrlLinkText.id = linkId;
+    eventUrlLink.appendChild(eventUrlLinkText);
+    eventUrlLink.setAttribute('aria-labelledby', `${titleId} ${linkId}`);
+    cardEl.appendChild(eventUrlLink);
+
     return cardEl;
   }
 
@@ -430,7 +434,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // HELPERS
   function parseFormData(target) {
-    return Array.from(new FormData(target))
-      .reduce((acc, [key, value]) => ({ ...acc, [key]: value }), {});
+    return Array.from(new FormData(target)).reduce((acc, [key, value]) => ({ ...acc, [key]: value }), {});
   }
 });
