@@ -165,11 +165,7 @@
             ></button>
           </div>
         </section>
-        <ul
-          class="carousel__content" 
-          aria-live="off" 
-          id="carouselItems"
-        >
+        <ul class="carousel__content" aria-live="off" id="carouselItems">
           <li
             style="background-image: url(./assets/images/carousel-1.png);"
             class="carousel__slide"
@@ -208,10 +204,10 @@
         <button class="btn btn-primary">Онлайн-магазин</button>
       </div>
     </section>
-    <section class="content-section">
+    <section class="content-section" aria-label="Выставки и события">
       <h2>Выставки и события</h2>
       <form class="filter" id="eventsFilterForm">
-        <fieldset role="tablist">
+        <fieldset role="radiogroup">
           <label class="radio option">
             <input class="radio__input" type="radio" value="ALL" name="dateFilter" checked>
             <span class="radio__circle"></span>
@@ -229,7 +225,11 @@
           </label>
         </fieldset>
       </form>
-      <section class="card__container" role="tabpanel" aria-labelledby="events-all" id="eventsContainer"></section>
+      <section class="events__content">
+        <div class="events__loader" role="status"><p id="eventsLiveregion"></p></div>
+        <section class="card__container" aria-labelledby="events-all" id="eventsContainer">
+      </section>
+      </section>
     </section>
     <section class="content-section">
       <h2>Музей</h2>

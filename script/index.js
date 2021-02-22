@@ -8,8 +8,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalCloseBtn = document.querySelector('#modalCloseBtn');
   const loginForm = document.querySelector('#loginForm');
   const loginFormLiveregion = document.querySelector('#loginFormLiveregion');
-  const eventsContainerEl = document.querySelector('#eventsContainer');
+  const eventsContainer = document.querySelector('#eventsContainer');
   const eventsFilterForm = document.querySelector('#eventsFilterForm');
+  const eventsLiveregion = document.querySelector('#eventsLiveregion');
   const museumSectionTabList = document.querySelector('#museumSectionTablist');
   const museumSectionContent = document.querySelector('#museumSectionContent');
   const subscriptionForm = document.querySelector('#subscriptionForm');
@@ -317,13 +318,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let timeout;
   function createEventCardList() {
-    setLoader();
     if (timeout) clearTimeout(timeout);
+    eventsLiveregion.classList.add('events__loader--pending');
+    eventsLiveregion.classList.remove('events__loader--done');
+    eventsLiveregion.innerHTML = 'Загрузка событий...';
+    
     timeout = setTimeout(() => {
       const eventCardElements = EVENTS_STATE.events.map(event => createEventCardEl(event));
-      eventsContainerEl.innerHTML = '';
-      eventCardElements.forEach(el => eventsContainerEl.appendChild(el));
-    }, 1000);
+      eventsLiveregion.classList.remove('events__loader--pending');
+      eventsLiveregion.classList.add('events__loader--done');
+      eventsLiveregion.innerHTML = `Загружено событий: ${eventCardElements.length}`;
+      eventsContainer.innerHTML = '';
+      eventCardElements.forEach(el => eventsContainer.appendChild(el));
+    }, 3000);
   }
 
   function createEventCardEl({
@@ -355,13 +362,6 @@ document.addEventListener('DOMContentLoaded', () => {
     cardEl.appendChild(descriptionEl);
     cardEl.appendChild(linkEl);
     return cardEl;
-  }
-
-  function setLoader() {
-    const loader = document.createElement('div');
-    loader.classList.add('events__loader');
-    loader.appendChild(document.createTextNode('Загрузка...'))
-    eventsContainerEl.appendChild(loader);
   }
 
   createEventCardList();

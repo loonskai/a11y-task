@@ -27,18 +27,34 @@
   margin: 10px 0;
 }
 
+.events__content {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .events__loader {
+  width: 100%;
+}
+
+.events__loader--pending {
   position: absolute;
   width: calc(100% + 20px);
   height: calc(100% + 10px);
+  display: flex;
   top: -10px;
   left: -10px;
   background: var(--white-color);
   opacity: 0.9;
-  display: flex;
   justify-content: center;
   align-items: center;
   font-size: 24px;
+  z-index: 1;
+}
+
+.events__loader--done {
+  margin-bottom: 1em;
 }
 
 @media only screen and (max-width: 800px) {
