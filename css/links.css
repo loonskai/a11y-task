@@ -1,5 +1,8 @@
 .icon-link {
   display: flex;
-  width: 30px;
-  margin-right: 20px;
+  justify-content: center;
+  align-items: center;
+  padding: 7px;
+  margin-right: 10px;
+  border-radius: 50%;
 }

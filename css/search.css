@@ -17,8 +17,13 @@
   top: 25%;
 }
 
+.search__icon img {
+  border-radius: 8px;
+}
+
 .search__icon input:focus + img {
-  box-shadow: 0 0 0 0.1em var(--black-color);
+  outline: none;
+  box-shadow: 0 0 0 0.2em var(--main-color);
 }
 
 @media only screen and (max-width: 400px) {

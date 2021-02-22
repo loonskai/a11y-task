@@ -26,7 +26,7 @@
 .check__input:focus + .check__box {
   box-shadow:
     0 0 0 0.1em var(--white-color),
-    0 0 0 0.2em var(--black-color);
+    0 0 0 0.3em var(--black-color);
 }
 
 .check__input:focus:checked + .check__box {
@@ -34,7 +34,7 @@
   background-color: var(--main-color);
   box-shadow:
     0 0 0 0.1em var(--main-color),
-    0 0 0 0.2em var(--black-color);
+    0 0 0 0.3em var(--black-color);
 }
 
 .check__input:checked + .check__box {

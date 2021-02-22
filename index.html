@@ -74,7 +74,7 @@
             aria-labelledby="passwordInput"
           >
         </label>
-        <button class="btn btn-secondary form__btn" aria-haspopup="true" type="submit">Вход</button>
+        <button class="btn btn-secondary form__btn" type="submit">Вход</button>
       </form>
       <button class="modal__close" aria-label="Закрыть" id="modalCloseBtn">×</button>
     </div>
@@ -98,8 +98,9 @@
           <span class="btn btn-secondary" aria-label="Русский">RU</span>
           <a href="/blank.html" target="_blank" rel="noreferrer" class="btn btn-secondary" hreflang="en" aria-label="English">EN</a>
         </nav>
-        <button class="btn-icon" id="modalOpen">
-          <img src="./assets/images/user-icon.svg" alt="Иконка пользователя">
+        <button class="btn-icon" type="button" aria-haspopup="true" id="modalOpen">
+          <img src="./assets/images/user-icon.svg" alt="">
+          <span class="visually-hidden">Вход в аккаунт</span>
         </button>
       </div>
     </section>
@@ -117,6 +118,7 @@
       <section class="carousel" id="carousel">
         <section class="carousel__content">
           <button class="carousel__arrow-btn carousel__arrow-btn--prev" id="carouselPrevBtn"></button>
+          <button class="carousel__arrow-btn carousel__arrow-btn--next" id="carouselNextBtn"></button>
           <ul class="carousel__slide-container">
             <li class="carousel__slide" style="background-image: url(./assets/images/carousel-1.png);">
               <h3 class="visually-hidden">Афиша выставки 'От Дюрера до Матисса - Избранные рисунки из собрания ГМИИ им. А.С. Пушкина</h3>
@@ -131,7 +133,6 @@
               <button class="btn btn-primary carousel__action-btn">Билеты онлайн</button>
             </li>
           </ul>
-          <button class="carousel__arrow-btn carousel__arrow-btn--next" id="carouselNextBtn"></button>
         </section>
         <div class="visually-hidden" aria-live="polite" aria-atomic="true" id="carouselLiveregion"></div>
         <ul class="carousel__nav no-decoration-list" id="carouselNav">

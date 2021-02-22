@@ -61,8 +61,11 @@
   width: var(--arrow-size);
   height: var(--arrow-size);
   box-sizing: border-box;
-  
   cursor: pointer;
+}
+
+.carousel__arrow-btn:focus {
+  box-shadow: 0 0 0 0.4em var(--main-color);
 }
 
 .carousel__arrow-btn--prev {
@@ -73,6 +76,7 @@
 }
 
 .carousel__arrow-btn--next {
+  order: 1;
   border-top: 5px solid var(--black-color);
   border-right: 5px solid var(--black-color);
   transform: rotate(45deg);
@@ -109,6 +113,10 @@
   color: var(--white-color);
   background-color: var(--main-color);
   cursor: auto;
+}
+
+.carousel__nav-btn--active:focus {
+  box-shadow: 0 0 0 0.2em var(--black-color);
 }
 
 .in-transition {

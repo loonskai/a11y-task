@@ -31,6 +31,11 @@ a:visited {
   color: #2e1f49;
 }
 
+*:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.2em var(--main-color);
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;
