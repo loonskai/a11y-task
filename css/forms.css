@@ -11,8 +11,8 @@
   margin-bottom: 0.5em;
 }
 
-.login-form-label,
-.login-form-input,
+.form__label,
+.form__input,
 .material-input {
   font-size: 16px;
 }
@@ -21,7 +21,7 @@
   margin-bottom: 10px;
 }
 
-.login-form-input {
+.form__input {
   border-radius: 3px;
   border: 1px solid var(--grey-light-border);
   background: var(--grey-light-bg);
@@ -29,7 +29,7 @@
   margin-bottom: 15px;
 }
 
-.login-form-btn {
+.form__btn {
   width: 100%;
   margin: 20px 0;
 }

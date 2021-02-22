@@ -70,10 +70,6 @@ a:visited {
   cursor: pointer;
 }
 
-.visible {
-  display: '';
-}
-
 .non-visible {
   display: none;
 }
@@ -82,14 +78,14 @@ a:visited {
   text-decoration: none ;
 }
 
-#skip-to-main {
+#skipToMain {
   top: -100px;
   left: 40% ;
   position: absolute;
   transition: top 0.2s;
 }
 
-#skip-to-main:focus {
+#skipToMain:focus {
   top: 10px;
 }
 

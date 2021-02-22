@@ -26,32 +26,32 @@
 <body>
   <div 
     class="modal non-visible"
-    id="modal"
     role="dialog"
     aria-modal="true"
-    aria-labelledby="loginModalHeadingId" 
+    aria-labelledby="loginModalHeading" 
     tabindex="-1"
+    id="modal"
   >
     <div class="modal__dialog">
       <div class="full-width">
-        <h2 id="loginModalHeadingId">Вход</h2>
+        <h2 id="loginModalHeading">Вход</h2>
       </div>
-      <form class="full-width">
+      <form class="full-width" id="loginForm">
         <label class="input">
-          <span class="login-form-label">Логин</span>
-          <input class="login-form-input" type="text" id="login">
+          <span class="form__label">Логин</span>
+          <input class="form__input" type="text">
         </label>
         <label class="input">
-          <span class="login-form-label">Пароль</span>
-          <input class="login-form-input" type="password">
+          <span class="form__label">Пароль</span>
+          <input class="form__input" type="password">
         </label>
-        <button class="btn btn-secondary login-form-btn" aria-haspopup="true" type="submit">Вход</button>
+        <button class="btn btn-secondary form__btn" aria-haspopup="true" type="submit">Вход</button>
       </form>
-      <button class="modal__close" id="modal-close-btn" aria-label="Close">×</button>
+      <button class="modal__close" aria-label="Close" id="modalCloseBtn">×</button>
     </div>
-    <div class="modal__mask" id="modal-mask"></div>
+    <div class="modal__mask" id="modalMask"></div>
   </div>
-  <a id="skip-to-main" class="btn btn-secondary no-underline" href="#main">Skip to main</a>
+  <a class="btn btn-secondary no-underline" href="#main" id="skipToMain">Skip to main</a>
   <header class="container">
     <section class="header">
       <div class="header__logo">
@@ -66,7 +66,7 @@
           <span class="btn btn-secondary" aria-label="Русский">RU</span>
           <a href="/en" class="btn btn-secondary" hreflang="en" aria-label="English">EN</a>
         </nav>
-        <button id="login-btn" class="btn-icon">
+        <button class="btn-icon" id="modalOpen">
           <img src="./assets/images/user-icon.svg" alt="Иконка пользователя">
         </button>
       </div>
@@ -84,7 +84,7 @@
     <section class="content-section">
       <section class="carousel" id="carousel">
         <section class="carousel__content">
-          <button class="carousel__arrow-btn carousel__arrow-btn--prev" id="carousel-btn-prev"></button>
+          <button class="carousel__arrow-btn carousel__arrow-btn--prev" id="carouselPrevBtn"></button>
           <ul class="carousel__slide-container">
             <li class="carousel__slide" style="background-image: url(./assets/images/carousel-1.png);">
               <h3 class="visually-hidden">Афиша выставки 'От Дюрера до Матисса - Избранные рисунки из собрания ГМИИ им. А.С. Пушкина</h3>
@@ -99,10 +99,10 @@
               <button class="btn btn-primary carousel__action-btn">Билеты онлайн</button>
             </li>
           </ul>
-          <button class="carousel__arrow-btn carousel__arrow-btn--next" id="carousel-btn-next"></button>
+          <button class="carousel__arrow-btn carousel__arrow-btn--next" id="carouselNextBtn"></button>
         </section>
-        <div class="visually-hidden" id="carousel-liveregion" aria-live="polite" aria-atomic="true"></div>
-        <ul class="carousel__nav no-decoration-list" id="carousel-navigation">
+        <div class="visually-hidden" id="carouselLiveregion" aria-live="polite" aria-atomic="true"></div>
+        <ul class="carousel__nav no-decoration-list" id="carouselNav">
           <li>
             <button class="carousel__nav-control-btn" data-action="stop">
               <span class="visually-hidden">Stop Animation</span>◼
@@ -137,7 +137,7 @@
     </section>
     <section class="content-section">
       <h2>Выставки и события</h2>
-      <form class="filter" id="events-filter-form">
+      <form class="filter" id="eventsFilterForm">
         <fieldset role="tablist">
           <label class="radio option">
             <input class="radio__input" type="radio" value="ALL" name="dateFilter" checked>
@@ -156,16 +156,16 @@
           </label>
         </fieldset>
       </form>
-      <section class="card__container" id="events-container" role="tabpanel" aria-labelledby="events-all"></section>
+      <section class="card__container" role="tabpanel" aria-labelledby="events-all" id="eventsContainer"></section>
     </section>
     <section class="content-section">
       <h2>Музей</h2>
-      <div class="tablist" role="tablist" id="museum-section__tablist">
+      <div class="tablist" role="tablist" id="museumSectionTablist">
         <button class="tab tab--active" role="tab" data-value="buildings">Здания</button>
         <button class="tab" role="tab" data-value="history">История</button>
       </div>
-      <section id="museum-section__content" role="tabpanel" aria-labelledby="events-all">
-        <div class="card__container" id="tab-section--buildings">
+      <section role="tabpanel" aria-labelledby="events-all" id="museumSectionContent">
+        <div class="card__container" id="tabSectionBuildings">
           <div class="card">
             <img src="./assets/images/building-1.png" alt="Схема здания">
             <h3>Мемориальная квартира С.Т.РИХТЕРА</h3>
@@ -203,7 +203,7 @@
             <a class="card__link" href="/details">Подробнее</a>
           </div>
         </div>
-        <div id="tab-section--history">
+        <div id="tabSectionHistory">
           <p>Государственный музей изобразительных искусств имени А.С. Пушкина – одно из крупнейших в России художественных собраний зарубежного искусства с древнейших времен до наших дней.</p>
           <p>В современной экспозиции представлены обширная учебная коллекция тонированных гипсовых слепков с произведений Античности, Средних веков и эпохи Возрождения, а также собрание подлинных произведений живописи, скульптуры, графики и декоративно-прикладного искусства.</p>
           <p>В залах первого этажа Главного здания представлены: произведения искусства Древнего Египта, Античности, собрание европейской живописи VIII–XVIII веков; два зала – Итальянский и Греческий дворики – занимают слепки. На втором этаже Главного здания в залах размещены слепки произведений искусства Древней Греции, Рима, Средних веков и Возрождения.</p>
@@ -246,19 +246,19 @@
       </section>
       <section>
         <h3>Подписка на новости</h3>
-        <form id="subscription-form">
+        <form id="subscriptionForm">
           <div class="col-3">
             <label class="input">
               <span>Email</span>
-              <input class="material-input" id="email" type="email">
+              <input class="material-input" type="email" id="email">
             </label>
           </div>
           <label class="check">
-            <input class="check__input" type="checkbox" id="agreement" required>
+            <input class="check__input" type="checkbox" required id="agreement">
             <span class="check__box"></span>
             Согласен на обработку персональных данных
           </label>
-          <button class="btn btn-primary" id="subscription-form-submit" type="submit">Подписаться</button>
+          <button class="btn btn-primary" type="submit" id="subscriptionFormSubmit">Подписаться</button>
         </form>
       </section>
     </div>

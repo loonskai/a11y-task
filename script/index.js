@@ -1,13 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
   const modal = document.querySelector('#modal');
-  const modalMask = document.querySelector('#modal-mask');
-  const loginBtn = document.querySelector('#login-btn');
-  const modalCloseBtn = document.querySelector('#modal-close-btn');
-  const eventsContainerEl = document.querySelector('#events-container');
-  const eventsFilterForm = document.querySelector('#events-filter-form');
-  const museumSectionTabList = document.querySelector('#museum-section__tablist');
-  const museumSectionContent = document.querySelector('#museum-section__content');
-  const subscriptionForm = document.querySelector('#subscription-form');
+  const modalMask = document.querySelector('#modalMask');
+  const modalOpenBtn = document.querySelector('#modalOpen');
+  const modalCloseBtn = document.querySelector('#modalCloseBtn');
+  const loginForm = document.querySelector('#loginForm');
+  const eventsContainerEl = document.querySelector('#eventsContainer');
+  const eventsFilterForm = document.querySelector('#eventsFilterForm');
+  const museumSectionTabList = document.querySelector('#museumSectionTablist');
+  const museumSectionContent = document.querySelector('#museumSectionContent');
+  const subscriptionForm = document.querySelector('#subscriptionForm');
+  const subscriptionBtn = subscriptionForm.querySelector('#subscriptionFormSubmit');
 
   const KEYS = {
     ESC: 'Escape',
@@ -15,9 +17,11 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // MODAL
-  loginBtn.addEventListener('click', openModal);
-  modalCloseBtn.addEventListener('click', closeModal);
   let previousActiveElement;
+
+  modalOpenBtn.addEventListener('click', openModal);
+  modalCloseBtn.addEventListener('click', closeModal);
+  loginForm.addEventListener('submit', submitLogin);
 
   function openModal() {
     previousActiveElement = document.activeElement;
@@ -26,10 +30,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     modal.classList.remove('non-visible');
-    modal.classList.add('visible');
     modalMask.addEventListener('click', closeModal);
     document.addEventListener('keydown', checkCloseDialog);
-
     modal.focus();
   }
 
@@ -41,9 +43,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     modal.classList.add('non-visible');
-    modal.classList.remove('visible');
-
     previousActiveElement.focus();
+  }
+
+  function submitLogin(e) {
+    e.preventDefault();
+    console.dir(e.target);
   }
 
   function checkCloseDialog(e) {
@@ -55,13 +60,13 @@ document.addEventListener('DOMContentLoaded', () => {
   // CAROUSEL
   const carousel = document.querySelector('#carousel');
   const slides = carousel.querySelectorAll('.carousel__slide');
-  const prevButton = document.querySelector('#carousel-btn-prev');
-  const nextButton = document.querySelector('#carousel-btn-next');
-  const carouselNav = document.querySelector('#carousel-navigation');
+  const prevButton = document.querySelector('#carouselPrevBtn');
+  const nextButton = document.querySelector('#carouselNextBtn');
+  const carouselNav = document.querySelector('#carouselNav');
   const carouselNavButtons = carouselNav.querySelectorAll('.carousel__nav-btn');
   const carouselNavStartBtn = carouselNav.querySelector('[data-action="start"]');
   const carouselNavStopBtn = carouselNav.querySelector('[data-action="stop"]');
-    // const carouselLiveregion = document.querySelector('#carousel-liveregion');
+    // const carouselLiveregion = document.querySelector('#carouselLiveregion');
   class MyCarousel {
     constructor() {
       this.DURATION = 5000;
@@ -347,7 +352,6 @@ document.addEventListener('DOMContentLoaded', () => {
   updateMuseumSection();
 
   // SUBSCRIPTION FORM
-  const subscriptionButton = subscriptionForm.querySelector('#subscription-form-submit');
   const SUBSCRIPTION_FORM_STATE = {
     checked: false
   };
@@ -358,7 +362,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   function updateSubscribsionForm() {
-    subscriptionButton.disabled = !SUBSCRIPTION_FORM_STATE.checked;
+    subscriptionBtn.disabled = !SUBSCRIPTION_FORM_STATE.checked;
   }
 
   updateSubscribsionForm();
