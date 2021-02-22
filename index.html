@@ -91,7 +91,7 @@
           <input class="search__input" type="search" aria-label="Поиск по сайту">
           <label class="search__icon">
             <input class="visually-hidden" type="submit" value="Искать">
-            <img src="./assets/images/search-icon.svg">
+            <img src="./assets/images/search-icon.svg" alt="">
           </label>
         </form>
         <nav aria-label="Выбрать язык">
@@ -165,38 +165,38 @@
             ></button>
           </div>
         </section>
-        <ul class="carousel__content" aria-live="off" id="carouselItems">
-          <li
+        <section class="carousel__content" aria-live="off" id="carouselItems">
+          <div
             style="background-image: url(./assets/images/carousel-1.png);"
             class="carousel__slide"
             role="group"
             aria-roledescription="slide"
             aria-label="1 из 3"
           >
-            <h3 class="visually-hidden">Афиша выставки 'От Дюрера до Матисса - Избранные рисунки из собрания ГМИИ им. А.С. Пушкина</h3>
+            <h2 class="visually-hidden">Афиша выставки 'От Дюрера до Матисса - Избранные рисунки из собрания ГМИИ им. А.С. Пушкина</h2>
             <a class="btn btn-primary carousel__action-btn" href="/blank.html" target="_blank" rel="noreferrer">Билеты онлайн</a>
-          </li>
-          <li 
+          </div>
+          <div 
             style="background-image: url(./assets/images/carousel-2.png);"
             class="carousel__slide"
             role="group"
             aria-roledescription="slide"
             aria-label="2 из 3"
           >
-            <h3 class="visually-hidden">Афиша выставки "Московская жизнь Джамбаттисты Тьеполо и его сына Джандоменико"</h3>
+            <h2 class="visually-hidden">Афиша выставки "Московская жизнь Джамбаттисты Тьеполо и его сына Джандоменико"</h2>
             <a class="btn btn-primary carousel__action-btn" href="/blank.html" target="_blank" rel="noreferrer">Билеты онлайн</a>
-          </li>
-          <li
+        </div>
+          <div
             style="background-image: url(./assets/images/carousel-3.png);"
             class="carousel__slide"
             role="group"
             aria-roledescription="slide"
             aria-label="3 из 3"
           >
-            <h3 class="visually-hidden">Афиша выставки "Реклама как искусство. Британский постер конца 19-го - начала 20го века"</h3>
+            <h2 class="visually-hidden">Афиша выставки "Реклама как искусство. Британский постер конца 19-го - начала 20го века"</h2>
             <a class="btn btn-primary carousel__action-btn" href="/blank.html" target="_blank" rel="noreferrer">Билеты онлайн</a>
-          </li>
-        </ul>
+      </div>
+        </section>
       </section>
       <div class="actions">
         <button class="btn btn-primary">Купить билет</button>
@@ -227,8 +227,7 @@
       </form>
       <section class="events__content">
         <div class="events__loader" role="status"><p id="eventsLiveregion"></p></div>
-        <section class="card__container" aria-labelledby="events-all" id="eventsContainer">
-      </section>
+        <ul class="card__container" id="eventsContainer"></ul>
       </section>
     </section>
     <section class="content-section">
@@ -237,7 +236,7 @@
         <button class="tab tab--active" role="tab" data-value="buildings">Здания</button>
         <button class="tab" role="tab" data-value="history">История</button>
       </div>
-      <section role="tabpanel" aria-labelledby="events-all" id="museumSectionContent">
+      <section role="tabpanel" id="museumSectionContent">
         <div class="card__container" id="tabSectionBuildings">
           <div class="card">
             <img src="./assets/images/building-1.png" alt="Схема здания">
@@ -288,7 +287,7 @@
     <section class="content-section">
       <h2>Онлайн-трансляции</h2>
       <div class="iframe__container">
-        <iframe class="iframe__video" src="https://www.youtube.com/embed/5qRR-5H1XgU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe title="search-icon" class="iframe__video" src="https://www.youtube.com/embed/5qRR-5H1XgU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
     </section>
     <section class="content-section">
@@ -312,9 +311,9 @@
         </ul>
         <h3>Соц. сети</h3>
         <ul class="no-decoration-list flex">
-          <li><a class="icon-link" href="mail:foo@mail.com" target="_blank" rel="noreferrer"><img src="./assets/images/email-icon.svg"></a></li>
-          <li><a class="icon-link" href="https://facebook.com" target="_blank" rel="noreferrer"><img src="./assets/images/fb-icon.svg"></a></li>
-          <li><a class="icon-link" href="https://t.me" target="_blank" rel="noreferrer"><img src="./assets/images/tg-icon.svg"></a></li>
+          <li><a class="icon-link" aria-label="Написать на email" href="mail:foo@mail.com" target="_blank" rel="noreferrer"><img src="./assets/images/email-icon.svg" alt=""></a></li>
+          <li><a class="icon-link" aria-label="Группа в Facebook" href="https://facebook.com" target="_blank" rel="noreferrer"><img src="./assets/images/fb-icon.svg" alt=""></a></li>
+          <li><a class="icon-link" aria-label="Канал в Telegram" href="https://t.me" target="_blank" rel="noreferrer"><img src="./assets/images/tg-icon.svg" alt=""></a></li>
         </ul>
       </section>
       <section>

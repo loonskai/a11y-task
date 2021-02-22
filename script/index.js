@@ -269,6 +269,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const EVENTS_STATE = {
     _events: [
       {
+        id: '001',
         title: 'Святослав Рихтер в кругу друзей. Москва - Коктебель',
         dateNote: 'Выставка до 20 ноября',
         description: 'Текст о музее',
@@ -278,6 +279,7 @@ document.addEventListener('DOMContentLoaded', () => {
         date: EVENT_FILTERS.TODAY
       },
       {
+        id: '002',
         title: 'Тату',
         dateNote: 'Выставка до 27 сентября',
         description: 'Текст о музее',
@@ -287,6 +289,7 @@ document.addEventListener('DOMContentLoaded', () => {
         date: EVENT_FILTERS.TODAY
       },
       {
+        id: '003',
         title: 'От Дюрера до Матисса. Избранные рисунки из собрания ГМИИ им. А.С. Пушкина',
         dateNote: 'Выставка до 1 ноября',
         description: 'Текст о музее',
@@ -306,9 +309,12 @@ document.addEventListener('DOMContentLoaded', () => {
     },
   };
 
-  const eventUrlLinkEl = document.createElement('a');
-  eventUrlLinkEl.classList.add('card__link');
-  eventUrlLinkEl.appendChild(document.createTextNode('Купить билет'));
+  const eventUrlLink = document.createElement('a');
+  const eventUrlLinkText = document.createElement('span');
+  eventUrlLinkText.textContent = 'Купить билет';
+  eventUrlLink.classList.add('card__link');
+  eventUrlLink.appendChild(eventUrlLinkText);
+  eventUrlLink.setAttribute('aria-label', 'Купить билет');
 
   eventsFilterForm.addEventListener('change', ({ target }) => {
     const { value } = target;
@@ -324,16 +330,17 @@ document.addEventListener('DOMContentLoaded', () => {
     eventsLiveregion.innerHTML = 'Загрузка событий...';
     
     timeout = setTimeout(() => {
-      const eventCardElements = EVENTS_STATE.events.map(event => createEventCardEl(event));
+      const eventCardElements = EVENTS_STATE.events.map(event => createEventCard(event));
       eventsLiveregion.classList.remove('events__loader--pending');
       eventsLiveregion.classList.add('events__loader--done');
-      eventsLiveregion.innerHTML = `Загружено событий: ${eventCardElements.length}`;
+      eventsLiveregion.innerHTML = `Показано событий: ${eventCardElements.length} из ${EVENTS_STATE.events.length}`;
       eventsContainer.innerHTML = '';
       eventCardElements.forEach(el => eventsContainer.appendChild(el));
     }, 3000);
   }
 
-  function createEventCardEl({
+  function createEventCard({
+    id,
     title,
     dateNote,
     description,
@@ -341,13 +348,15 @@ document.addEventListener('DOMContentLoaded', () => {
     imgAlt,
     url
   }) {
-    const cardEl = document.createElement('div');
+    const cardEl = document.createElement('li');
     const titleEl = document.createElement('h3');
     const imgEl = document.createElement('img');
     const dateNoteEl = document.createElement('h4');
     const descriptionEl = document.createElement('span');
-    const linkEl = eventUrlLinkEl.cloneNode(true);
+    const linkEl = eventUrlLink.cloneNode(true);
     
+    const titleId = `event-card-${id}`;
+    titleEl.id = titleId;
     cardEl.classList.add('card');
     imgEl.setAttribute('src', `./assets/images/${img}`);
     imgEl.setAttribute('alt', `./assets/images/${imgAlt}`);
@@ -355,6 +364,7 @@ document.addEventListener('DOMContentLoaded', () => {
     dateNoteEl.appendChild(document.createTextNode(dateNote));
     descriptionEl.appendChild(document.createTextNode(description));
     linkEl.setAttribute('href', url);
+    linkEl.setAttribute('aria-labelledby', titleId);
 
     cardEl.appendChild(imgEl);
     cardEl.appendChild(titleEl);
