@@ -6,7 +6,10 @@
   --grey-light-border: #C7D2E9;
   --grey-light-bg: #F9F9FB;
   --grey-light-bg-footer: #F1F1F1;
-  --grey-disabled: #b3b3b3;
+  --grey-disabled-color: #868686;
+  --grey-disabled-bg: #dbdbdb;
+  --grey-disabled-border-color: #bbbbbb;
+  --error-color: #E31C3D;
 }
 
 body {
@@ -68,10 +71,6 @@ a:visited {
   padding: 10px;
   border: none;
   cursor: pointer;
-}
-
-.non-visible {
-  display: none;
 }
 
 .no-underline {

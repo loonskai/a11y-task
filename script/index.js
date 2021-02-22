@@ -1,9 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
+  const [body] = document.getElementsByTagName('body');
+  const alertLiveregion = document.querySelector('#alertLiveregion');
   const modal = document.querySelector('#modal');
   const modalMask = document.querySelector('#modalMask');
   const modalOpenBtn = document.querySelector('#modalOpen');
+  const modalHeading = document.querySelector('#modalHeading');
   const modalCloseBtn = document.querySelector('#modalCloseBtn');
   const loginForm = document.querySelector('#loginForm');
+  const loginFormLiveregion = document.querySelector('#loginFormLiveregion');
   const eventsContainerEl = document.querySelector('#eventsContainer');
   const eventsFilterForm = document.querySelector('#eventsFilterForm');
   const museumSectionTabList = document.querySelector('#museumSectionTablist');
@@ -29,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (child !== modal) child.inert = true;
     });
 
-    modal.classList.remove('non-visible');
+    modal.style.display = 'block';
     modalMask.addEventListener('click', closeModal);
     document.addEventListener('keydown', checkCloseDialog);
     modal.focus();
@@ -42,13 +46,41 @@ document.addEventListener('DOMContentLoaded', () => {
       child.inert = false;
     });
 
-    modal.classList.add('non-visible');
+    loginFormLiveregion.innerHTML = '';
+    modal.style.display = 'none';
+    
     previousActiveElement.focus();
   }
-
+  
   function submitLogin(e) {
     e.preventDefault();
-    console.dir(e.target);
+    const { login, password } = parseFormData(e.target);
+    loginFormLiveregion.classList.remove('form__error');
+    loginFormLiveregion.style.display = 'block';
+    loginFormLiveregion.innerHTML = "<h4>Загрузка ...</h4>";
+    Array.from(e.target.elements).forEach(formEl => formEl.disabled = true);
+    
+    setTimeout(() => {
+      Array.from(e.target.elements).forEach(formEl => formEl.disabled = false);
+      if (login !== 'test' || password !== 'test') {
+        loginFormLiveregion.classList.add('form__error');
+        loginFormLiveregion.innerHTML = `
+          <h4>Мы не смогли обработать эту форму из-за ошибок:</h4>
+          <ul>
+            <li>Неверный логин или пароль.</li>
+            <li>Подсказка: введите латиницей слово "test" в поле логина и пароля.</li>
+          <ul>
+        `;
+      } else {
+        loginFormLiveregion.style.display = 'none';
+        alertLiveregion.textContent = 'Вы успешно зашли в аккаунт!';
+        alertLiveregion.style.display = "block";
+        setTimeout(() => {
+          alertLiveregion.style.display = "none";
+        }, 2000);
+        closeModal();
+      }
+    }, 1000);
   }
 
   function checkCloseDialog(e) {
@@ -366,4 +398,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   updateSubscribsionForm();
+
+  // HELPERS
+  function parseFormData(target) {
+    return Array.from(new FormData(target))
+      .reduce((acc, [key, value]) => ({ ...acc, [key]: value }), {});
+  }
 });

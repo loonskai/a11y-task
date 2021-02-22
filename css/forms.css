@@ -17,14 +17,10 @@
   font-size: 16px;
 }
 
-.login-form-label {
-  margin-bottom: 10px;
-}
-
 .form__input {
   border-radius: 3px;
   border: 1px solid var(--grey-light-border);
-  background: var(--grey-light-bg);
+  background-color: var(--grey-light-bg);
   padding: 10px;
   margin-bottom: 15px;
 }
@@ -32,6 +28,22 @@
 .form__btn {
   width: 100%;
   margin: 20px 0;
+}
+
+.form__input:disabled {
+  color: var(--grey-disabled-color);
+  background-color: var(--grey-disabled-bg);
+  border-color: var(--grey-disabled-border-color);
+}
+
+.form__btn:disabled {
+  color: var(--grey-disabled-color);
+  background-color: var(--grey-disabled-bg);
+  cursor: auto;
+}
+
+.form__error {
+  color: var(--error-color);
 }
 
 .material-input {

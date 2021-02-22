@@ -11,7 +11,8 @@
 }
 
 .btn-primary:disabled {
-  background: var(--grey-disabled);
+  background: var(--grey-disabled-bg);
+  background: var(--grey-disabled-color);
   cursor: auto;
 }
 
