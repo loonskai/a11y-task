@@ -24,25 +24,6 @@ header {
   flex-basis: 50%;
 }
 
-.header__search {
-  position: relative;
-}
-
-.header__search-input {
-  margin: 0 10px;
-  padding: 10px;
-  padding-right: 25px;
-  border-radius: 8px;
-  border: 1px solid var(--grey-light-border);
-  background: var(--grey-light-bg);
-}
-
-.header__search-icon {
-  position: absolute;
-  right: 15px;
-  top: 25%;
-}
-
 .header__nav-list {
   display: flex;
   flex-basis: 100%;
@@ -69,17 +50,5 @@ header {
   .header__nav-list {
     justify-content: center;
     flex-wrap: wrap;
-  }
-}
-
-@media only screen and (max-width: 400px) {
-  .header__search {
-    flex-basis: 100%;
-    margin-bottom: 10px;
-  }
-  
-  .header__search-input {
-    margin: 0;
-    width: 100%;
   }
 }

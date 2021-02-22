@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- TODO: Dynamic language change -->
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
@@ -18,6 +17,7 @@
   <link rel="stylesheet" href="./css/cards.css">
   <link rel="stylesheet" href="./css/lists.css">
   <link rel="stylesheet" href="./css/iframe.css">
+  <link rel="stylesheet" href="./css/search.css">
   <link rel="stylesheet" href="./css/carousel.css">
   <link rel="stylesheet" href="./css/alert.css">
   <link rel="stylesheet" href="./css/links.css">
@@ -84,12 +84,15 @@
   <header class="container">
     <section class="header">
       <div class="header__logo">
-        <img src="./assets/images/logo.png" alt="Логотип Государственного музея Пушкина">
+        <img src="./assets/images/logo.png" alt="Логотип Государственного музея имени Пушкина">
       </div>
       <div class="header__controls">
-        <form class="header__search" role="search">
-          <img class="header__search-icon" src="./assets/images/search-icon.svg">
-          <input class="header__search-input" type="search" aria-label="search text">
+        <form class="search" role="search">
+          <input class="search__input" type="search" aria-label="Поиск по сайту">
+          <label class="search__icon">
+            <input class="visually-hidden" type="submit" value="Искать">
+            <img src="./assets/images/search-icon.svg">
+          </label>
         </form>
         <nav aria-label="Выбрать язык">
           <span class="btn btn-secondary" aria-label="Русский">RU</span>
@@ -109,7 +112,7 @@
     </nav>
   </header>
   <main class="container" id="main">
-    <!-- <h1>TODO: Add main title</h1> -->
+    <h1 class="visually-hidden">Афиша Государственного музея изобразительных искусств имени А.С.Пушкина</h1>
     <section class="content-section">
       <section class="carousel" id="carousel">
         <section class="carousel__content">
