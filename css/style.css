@@ -79,13 +79,15 @@ a:visited {
 
 #skipToMain {
   top: -100px;
-  left: 40% ;
+  left: 40%;
   position: absolute;
   transition: top 0.2s;
+  padding-left: 3em;
+  padding-right: 3em;
 }
 
 #skipToMain:focus {
-  top: 10px;
+  top: 20px;
 }
 
 .filter {
